@@ -124,13 +124,12 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_Login"
+            style="@style/Widget.MyApp.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:text="@string/app_login"
-            style="@style/Widget.MyApp.Button"/>
-<!--            android:backgroundTint="@color/dark_accent"/>-->
+            android:text="@string/app_login" />
 
         <TextView
             android:id="@+id/textView9"
@@ -146,18 +145,18 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_Signup"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:strokeColor="@color/dark_accent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
+            android:onClick="OnSignUp"
             android:text="@string/app_signup"
             android:textColor="@color/dark_accent"
-            tools:layout_marginBottom="0dp"
-            />
+            app:strokeColor="@color/dark_accent"
+            tools:layout_marginBottom="0dp" />
 
     </LinearLayout>
 

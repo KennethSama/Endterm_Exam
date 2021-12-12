@@ -2,4 +2,6 @@
     <string name="app_name">Pacefy</string>
     <string name="app_login">LOG-IN</string>
     <string name="app_signup">SIGN-UP</string>
+    <string name="type_inst">Instructor</string>
+    <string name="type_stud">Student</string>
 </resources>

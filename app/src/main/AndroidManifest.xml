@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EndtermExam">
         <activity
+            android:name=".SignupMenu"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
@@ -23,7 +26,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>
