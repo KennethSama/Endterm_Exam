@@ -142,9 +142,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_marginStart="30dp"
+                    android:checked="true"
                     android:padding="0dp"
                     android:text="@string/type_stud"
-                    android:checked="true"/>
+                    tools:ignore="TouchTargetSizeCheck" />
 
                 <RadioButton
                     android:id="@+id/radioButton_Instructor"
@@ -152,7 +153,8 @@
                     android:layout_height="25dp"
                     android:layout_marginStart="30dp"
                     android:padding="0dp"
-                    android:text="@string/type_inst" />
+                    android:text="@string/type_inst"
+                    tools:ignore="TouchTargetSizeCheck" />
             </RadioGroup>
 
         </LinearLayout>
@@ -170,15 +172,17 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_Signup"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.MyApp.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp"
                 android:layout_marginTop="40dp"
                 android:text="@string/app_signup"
-                android:textColor="@color/dark_accent"
-                app:strokeColor="@color/dark_accent" />
+                android:fontFamily="@font/quicksand_bold"
+                android:textColor="@color/white_primary"
+                app:rippleColor="@color/accent"
+                android:onClick="OnDashboard"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -197,18 +201,20 @@
                     android:text="Already have an Account? "
                     android:textColor="@color/black"
                     android:textSize="14sp"/>
+
                 <TextView
                     android:id="@+id/textView_Login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="30dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="30dp"
                     android:layout_marginBottom="30dp"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="LOG-IN"
                     android:onClick="OnLogin"
+                    android:text="LOG-IN"
                     android:textColor="@color/dark_accent"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
         </LinearLayout>

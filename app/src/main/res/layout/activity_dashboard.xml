@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_primary"
+    android:orientation="vertical"
+    tools:context=".Dashboard">
+
+    <include layout="@layout/pacefy_actionbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="30dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Courses"
+                        android:textColor="@color/primary_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="View All"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_accent"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:layout_marginRight="30dp"
+                    android:scrollbarThumbHorizontal="@color/primary">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:gravity="start"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:layout_width="273dp"
+                            android:layout_height="179dp"
+
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="20dp"
+                            android:gravity="bottom|center_horizontal"
+                            android:paddingBottom="7dp"
+                            android:text="Course Name"
+                            android:textAllCaps="false"
+                            android:textSize="18dp"
+                            app:cornerRadius="15dp" />
+
+                        <Button
+                            android:id="@+id/button"
+                            android:layout_width="273dp"
+
+                            android:layout_height="179dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center_horizontal"
+                            android:paddingBottom="7dp"
+                            android:text="Course Name"
+                            android:textAllCaps="false"
+                            android:textSize="18dp"
+                            app:cornerRadius="15dp" />
+
+                        <Button
+                            android:id="@+id/button2"
+                            android:layout_width="273dp"
+
+                            android:layout_height="179dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center_horizontal"
+                            android:paddingBottom="7dp"
+                            android:text="Course Name"
+                            android:textAllCaps="false"
+                            android:textSize="18dp"
+                            app:cornerRadius="15dp" />
+
+                        <Button
+                            android:id="@+id/button3"
+                            android:layout_width="273dp"
+
+                            android:layout_height="179dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="20dp"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center_horizontal"
+                            android:paddingBottom="7dp"
+                            android:text="Course Name"
+                            android:textAllCaps="false"
+                            android:textSize="18dp"
+                            app:cornerRadius="15dp" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Quizzes"
+                        android:textColor="@color/primary_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="View All"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_accent"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <Button
+                        style="@style/Widget.MyApp.ButtonCard"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="100dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="0dp"
+                        android:drawableLeft="@drawable/ic_quiz"
+                        android:gravity="bottom|center_horizontal"
+                        android:paddingBottom="20dp"
+                        android:text="Number of Quizzes Available"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primary_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Attendance"
+                        android:textColor="@color/primary_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="View All"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_accent"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <Button
+                        style="@style/Widget.MyApp.ButtonCard"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="100dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="0dp"
+                        android:drawableLeft="@drawable/ic_attendance"
+                        android:gravity="bottom|center_horizontal"
+                        android:paddingBottom="20dp"
+                        android:text="Attendance Percentage"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primary_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="30dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Grades"
+                        android:textColor="@color/primary_text"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="View All"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/dark_accent"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <Button
+                        style="@style/Widget.MyApp.ButtonCard"
+                        android:layout_width="match_parent"
+
+                        android:layout_height="100dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginBottom="0dp"
+                        android:drawableLeft="@drawable/ic_attendance"
+                        android:gravity="bottom|center_horizontal"
+                        android:paddingBottom="20dp"
+                        android:text="Number of Courses with Grades"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primary_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -16,6 +16,6 @@
     <color name="primary_text">#212121</color>
     <color name="secondary_text">#757575</color>
     <color name="divider">#BDBDBD</color>
+    <color name="end_alpha">#6100D1AC</color>
     <color name="no_color">#00888888</color>
-    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/primary</color>
 </resources>

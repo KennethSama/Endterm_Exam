@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EndtermExam">
-        <activity
-            android:name=".SignupMenu"
-            android:exported="false" />
+
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
@@ -25,7 +23,10 @@
             android:name=".LoginMenu"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SignupMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Dashboard"
             android:exported="false" />
     </application>
 
