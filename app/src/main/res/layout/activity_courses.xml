@@ -19,7 +19,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="12dp" />
+
             <LinearLayout
+                android:id="@+id/course_id_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="30dp"
@@ -37,7 +42,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand_bold"
-                        android:text="Course Name"
+                        android:text="@string/hint_coursename"
                         android:textColor="@color/primary_text"
                         android:textSize="18sp" />
 
@@ -50,27 +55,76 @@
                     android:gravity="start"
                     android:orientation="horizontal">
 
-                    <Button
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="179dp"
+                        android:layout_height="match_parent">
 
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="top|left"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="20dp"
-                        android:text="Number of Modules"
-                        android:textAllCaps="false"
-                        android:textSize="18dp"
-                        app:cornerRadius="15dp" />
+                        <Button
+                            android:id="@+id/button_course"
+                            android:layout_width="match_parent"
+                            android:layout_height="179dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="top|left"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="20dp"
+                            android:text="@string/hint_modulenums"
+                            android:textAllCaps="false"
+                            android:textSize="18dp"
+                            app:cornerRadius="15dp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/button_course"
+                            android:layout_alignBottom="@+id/button_course"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/round_corner"
+                            android:elevation="@dimen/cardview_default_elevation"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:text="CHECK"
+                                android:textColor="@color/primary_text" />
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <!--                    <Button-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="179dp"-->
+                    <!--                        android:layout_marginStart="15dp"-->
+                    <!--                        android:layout_marginEnd="15dp"-->
+                    <!--                        android:layout_marginBottom="20dp"-->
+                    <!--                        android:drawableEnd="@drawable/round_button"-->
+                    <!--                        android:drawablePadding="50dp"-->
+                    <!--                        android:fontFamily="@font/quicksand_bold"-->
+                    <!--                        android:gravity="top|left"-->
+                    <!--                        android:paddingLeft="20dp"-->
+                    <!--                        android:paddingTop="20dp"-->
+                    <!--                        android:text="Number of Modules"-->
+                    <!--                        android:textAllCaps="false"-->
+                    <!--                        android:textSize="18dp"-->
+                    <!--                        app:cornerRadius="15dp" />-->
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/course_id_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="30dp"
@@ -88,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand_bold"
-                        android:text="Course Name"
+                        android:text="@string/hint_coursename"
                         android:textColor="@color/primary_text"
                         android:textSize="18sp" />
 
@@ -101,27 +155,76 @@
                     android:gravity="start"
                     android:orientation="horizontal">
 
-                    <Button
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="179dp"
+                        android:layout_height="match_parent">
 
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="top|left"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="20dp"
-                        android:text="Number of Modules"
-                        android:textAllCaps="false"
-                        android:textSize="18dp"
-                        app:cornerRadius="15dp" />
+                        <Button
+                            android:id="@+id/button_course"
+                            android:layout_width="match_parent"
+                            android:layout_height="179dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="top|left"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="20dp"
+                            android:text="@string/hint_modulenums"
+                            android:textAllCaps="false"
+                            android:textSize="18dp"
+                            app:cornerRadius="15dp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/button_course"
+                            android:layout_alignBottom="@+id/button_course"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/round_corner"
+                            android:elevation="@dimen/cardview_default_elevation"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:text="CHECK"
+                                android:textColor="@color/primary_text" />
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <!--                    <Button-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="179dp"-->
+                    <!--                        android:layout_marginStart="15dp"-->
+                    <!--                        android:layout_marginEnd="15dp"-->
+                    <!--                        android:layout_marginBottom="20dp"-->
+                    <!--                        android:drawableEnd="@drawable/round_button"-->
+                    <!--                        android:drawablePadding="50dp"-->
+                    <!--                        android:fontFamily="@font/quicksand_bold"-->
+                    <!--                        android:gravity="top|left"-->
+                    <!--                        android:paddingLeft="20dp"-->
+                    <!--                        android:paddingTop="20dp"-->
+                    <!--                        android:text="Number of Modules"-->
+                    <!--                        android:textAllCaps="false"-->
+                    <!--                        android:textSize="18dp"-->
+                    <!--                        app:cornerRadius="15dp" />-->
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/course_id_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="30dp"
@@ -139,7 +242,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand_bold"
-                        android:text="Course Name"
+                        android:text="@string/hint_coursename"
                         android:textColor="@color/primary_text"
                         android:textSize="18sp" />
 
@@ -152,21 +255,69 @@
                     android:gravity="start"
                     android:orientation="horizontal">
 
-                    <Button
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="179dp"
+                        android:layout_height="match_parent">
 
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="20dp"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="top|left"
-                        android:paddingLeft="20dp"
-                        android:paddingTop="20dp"
-                        android:text="Number of Modules"
-                        android:textAllCaps="false"
-                        android:textSize="18dp"
-                        app:cornerRadius="15dp" />
+                        <Button
+                            android:id="@+id/button_course"
+                            android:layout_width="match_parent"
+                            android:layout_height="179dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="top|left"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="20dp"
+                            android:text="@string/hint_modulenums"
+                            android:textAllCaps="false"
+                            android:textSize="18dp"
+                            app:cornerRadius="15dp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignEnd="@+id/button_course"
+                            android:layout_alignBottom="@+id/button_course"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/round_corner"
+                            android:elevation="@dimen/cardview_default_elevation"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:text="CHECK"
+                                android:textColor="@color/primary_text" />
+                        </RelativeLayout>
+
+
+                    </RelativeLayout>
+
+                    <!--                    <Button-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="179dp"-->
+                    <!--                        android:layout_marginStart="15dp"-->
+                    <!--                        android:layout_marginEnd="15dp"-->
+                    <!--                        android:layout_marginBottom="20dp"-->
+                    <!--                        android:drawableEnd="@drawable/round_button"-->
+                    <!--                        android:drawablePadding="50dp"-->
+                    <!--                        android:fontFamily="@font/quicksand_bold"-->
+                    <!--                        android:gravity="top|left"-->
+                    <!--                        android:paddingLeft="20dp"-->
+                    <!--                        android:paddingTop="20dp"-->
+                    <!--                        android:text="Number of Modules"-->
+                    <!--                        android:textAllCaps="false"-->
+                    <!--                        android:textSize="18dp"-->
+                    <!--                        app:cornerRadius="15dp" />-->
 
                 </LinearLayout>
 

@@ -4,4 +4,12 @@
     <string name="app_signup">SIGN-UP</string>
     <string name="type_inst">Instructor</string>
     <string name="type_stud">Student</string>
+    <string name="app_next">Next</string>
+    <string name="app_prev">Previous</string>
+    <string name="hint_coursename">Course Name</string>
+    <string name="hint_addcourse">Add New Course</string>
+    <string name="hint_modulenums">Number of Modules</string>
+    <string name="hint_modulenumber">Module Number</string>
+    <string name="hint_topicnumber">Topic Number</string>
+    <string name="hint_topicnumber_with_title">Topic Number - Topic Title</string>
 </resources>
