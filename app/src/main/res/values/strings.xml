@@ -2,14 +2,39 @@
     <string name="app_name">Pacefy</string>
     <string name="app_login">LOG-IN</string>
     <string name="app_signup">SIGN-UP</string>
+    <string name="app_username">Username</string>
     <string name="type_inst">Instructor</string>
     <string name="type_stud">Student</string>
     <string name="app_next">Next</string>
     <string name="app_prev">Previous</string>
+    <string name="app_submit">Submit</string>
+
+    <!-- Action App Bar -->
+    <string name="app_courses">Courses</string>
+    <string name="app_quizzes">Quizzes</string>
+    <string name="app_attend">Attendances</string>
+    <string name="app_grades">Grades</string>
+
+    <string name="hint_num_of_all_courses_quizzes">Number of Quizzes In All Courses</string>
+    <string name="hint_num_of_all_courses_attendPerc">Attendance Percentage In All Courses</string>
+    <string name="hint_num_of_all_courses_grades">Number of Courses with Grades</string>
     <string name="hint_coursename">Course Name</string>
     <string name="hint_addcourse">Add New Course</string>
-    <string name="hint_modulenums">Number of Modules</string>
+
+    <!-- Courses Activity-->
+    <string name="hint_modulenums">Modules Number</string>
+    <string name="hint_quizzesnums">Quizzes Number</string>
+    <string name="hint_attendPerc">Attendance Percentage</string>
+    <string name="hint_gradesnums">Grades Percentage</string>
+
+
     <string name="hint_modulenumber">Module Number</string>
     <string name="hint_topicnumber">Topic Number</string>
     <string name="hint_topicnumber_with_title">Topic Number - Topic Title</string>
+    <string name="hint_quiznumber">Quiz No.</string>
+    <string name="hint_quiztitle">Quiz Title</string>
+    <string name="hint_quiz_quest">Quiz Question</string>
+    <string name="hint_itemnumber">Item No.</string>
+    <string name="hint_multiplechoice_answer">Choices</string>
+    <string name="hint_quiztime">Time: hh | mm | ss</string>
 </resources>

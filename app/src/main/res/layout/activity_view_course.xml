@@ -90,6 +90,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand_bold"
                         android:gravity="start|top"
+                        android:onClick="ViewTopic"
                         android:paddingTop="20dp"
                         android:text="@string/hint_topicnumber"
                         android:textAlignment="viewStart"
@@ -109,6 +110,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand_bold"
                         android:gravity="start|top"
+                        android:onClick="ViewTopic"
                         android:paddingTop="20dp"
                         android:text="@string/hint_topicnumber"
                         android:textAlignment="viewStart"
@@ -136,6 +138,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand_bold"
                         android:gravity="start|top"
+                        android:onClick="ViewTopic"
                         android:paddingTop="20dp"
                         android:text="@string/hint_topicnumber"
                         android:textAlignment="viewStart"
@@ -196,7 +199,8 @@
                         android:textAllCaps="false"
                         android:textColor="@color/primary_text"
                         android:textSize="15sp"
-                        tools:textSize="20sp" />
+                        tools:textSize="20sp"
+                        android:onClick="ViewTopic" />
 
                     <Button
                         android:id="@+id/button"
@@ -209,6 +213,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand_bold"
                         android:gravity="start|top"
+                        android:onClick="ViewTopic"
                         android:paddingTop="20dp"
                         android:text="@string/hint_topicnumber"
                         android:textAlignment="viewStart"
@@ -263,6 +268,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/quicksand_bold"
                         android:gravity="start|top"
+                        android:onClick="ViewTopic"
                         android:paddingTop="20dp"
                         android:text="@string/hint_topicnumber"
                         android:textAlignment="viewStart"

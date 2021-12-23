@@ -2,8 +2,9 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:id="@+id/actionbar_pacefy"
+    android:id="@+id/include_actionbar_pacefy"
     android:background="@color/white_primary">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,14 +14,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="7dp"
-            android:layout_marginBottom="12dp"
             android:src="@drawable/ic_baseline_arrow_back_24" />
 
         <TextView
-            android:id="@+id/textView_current_activityTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
@@ -33,9 +30,9 @@
             android:layout_toEndOf="@+id/imageView_icon2"
             android:fontFamily="@font/quicksand_bold"
             android:gravity="center"
-            android:text="Dashboard"
+            android:text="@string/hint_quiztime"
             android:textColor="@color/primary_text"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/imageView_menu"

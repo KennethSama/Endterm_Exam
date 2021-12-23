@@ -8,7 +8,8 @@
     android:orientation="vertical"
     tools:context=".Dashboard">
 
-    <include layout="@layout/pacefy_actionbar" />
+    <include layout="@layout/pacefy_actionbar"
+        android:id="@+id/actionbar_pacefy"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -80,6 +81,7 @@
                             android:layout_marginEnd="15dp"
                             android:layout_marginBottom="15dp"
                             android:gravity="bottom|center_horizontal"
+                            android:onClick="ViewCourse"
                             android:paddingBottom="20dp"
                             android:text="@string/hint_coursename"
                             android:textAllCaps="false"
@@ -153,17 +155,19 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/button_viewAllQuizzes2"
                         style="@style/Widget.MyApp.ButtonCard"
                         android:layout_width="match_parent"
-
                         android:layout_height="100dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="0dp"
                         android:drawableLeft="@drawable/ic_quiz"
                         android:gravity="bottom|start"
+                        android:onClick="ViewAll"
+                        android:paddingTop="10dp"
                         android:paddingBottom="20dp"
-                        android:text="Number of Quizzes Available"
+                        android:text="@string/hint_num_of_all_courses_quizzes"
                         android:textAlignment="viewStart"
                         android:textAllCaps="false"
                         android:textColor="@color/primary_text"
@@ -217,17 +221,19 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/button_viewAllAttendance2"
                         style="@style/Widget.MyApp.ButtonCard"
                         android:layout_width="match_parent"
-
                         android:layout_height="100dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="0dp"
                         android:drawableLeft="@drawable/ic_attendance"
                         android:gravity="bottom|start"
+                        android:onClick="ViewAll"
+                        android:paddingTop="10dp"
                         android:paddingBottom="20dp"
-                        android:text="Attendance Percentage"
+                        android:text="@string/hint_num_of_all_courses_attendPerc"
                         android:textAlignment="textStart"
                         android:textAllCaps="false"
                         android:textColor="@color/primary_text"
@@ -281,17 +287,19 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:id="@+id/button_viewAllGrades2"
                         style="@style/Widget.MyApp.ButtonCard"
                         android:layout_width="match_parent"
-
                         android:layout_height="100dp"
                         android:layout_marginStart="15dp"
                         android:layout_marginEnd="15dp"
                         android:layout_marginBottom="0dp"
-                        android:drawableLeft="@drawable/ic_attendance"
+                        android:drawableLeft="@drawable/ic_baseline_grading_24"
                         android:gravity="bottom|start"
+                        android:onClick="ViewAll"
+                        android:paddingTop="10dp"
                         android:paddingBottom="20dp"
-                        android:text="Number of Courses with Grades"
+                        android:text="@string/hint_num_of_all_courses_grades"
                         android:textAlignment="viewStart"
                         android:textAllCaps="false"
                         android:textColor="@color/primary_text"

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EndtermExam">
         <activity
+            android:name=".ViewAttendance"
+            android:exported="false" />
+        <activity
             android:name=".ViewTopic"
             android:exported="false" />
         <activity
