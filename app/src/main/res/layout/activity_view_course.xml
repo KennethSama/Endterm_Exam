@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/linearLayout_courseModulesParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -26,9 +27,10 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp">
+                android:layout_marginBottom="15dp">
 
                 <Button
+                    android:id="@+id/button_noTouchCourse"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:layout_alignParentStart="true"
@@ -48,238 +50,77 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical">
+<!--            <include-->
+<!--                layout="@layout/module_topics"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="visible" />-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:orientation="horizontal">
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:layout_marginEnd="30dp"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                android:orientation="vertical"-->
+<!--                android:visibility="visible">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="@string/hint_modulenumber"
-                        android:textColor="@color/primary_text"
-                        android:textSize="18sp" />
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="end"-->
+<!--                    android:orientation="horizontal">-->
 
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:fontFamily="@font/quicksand_bold"-->
+<!--                        android:text="@string/hint_modulenumber"-->
+<!--                        android:textColor="@color/primary_text"-->
+<!--                        android:textSize="18sp" />-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:gravity="start"
-                    android:orientation="horizontal">
+<!--                </LinearLayout>-->
 
-                    <Button
-                        style="@style/Widget.MyApp.ButtonCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="start|top"
-                        android:onClick="ViewTopic"
-                        android:paddingTop="20dp"
-                        android:text="@string/hint_topicnumber"
-                        android:textAlignment="viewStart"
-                        android:textAllCaps="false"
-                        android:textColor="@color/primary_text"
-                        android:textSize="15sp"
-                        tools:textSize="20sp" />
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:orientation="vertical">-->
 
-                    <Button
-                        android:id="@+id/button"
-                        style="@style/Widget.MyApp.ButtonCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="start|top"
-                        android:onClick="ViewTopic"
-                        android:paddingTop="20dp"
-                        android:text="@string/hint_topicnumber"
-                        android:textAlignment="viewStart"
-                        android:textAllCaps="false"
-                        android:textColor="@color/primary_text"
-                        android:textSize="15sp"
-                        tools:textSize="20sp" />
+<!--                    <Button-->
+<!--                        style="@style/Widget.MyApp.ButtonCard"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="15dp"-->
+<!--                        android:layout_marginEnd="15dp"-->
+<!--                        android:fontFamily="@font/quicksand_bold"-->
+<!--                        android:paddingTop="10dp"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:text="@string/hint_topicnumber"-->
+<!--                        android:textAlignment="viewStart"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/primary_text"-->
+<!--                        android:textSize="14sp" />-->
 
-                </LinearLayout>
+<!--                    <Button-->
+<!--                        style="@style/Widget.MyApp.ButtonCard"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="15dp"-->
+<!--                        android:layout_marginEnd="15dp"-->
+<!--                        android:fontFamily="@font/quicksand_bold"-->
+<!--                        android:paddingTop="10dp"-->
+<!--                        android:paddingBottom="10dp"-->
+<!--                        android:text="@string/hint_topicnumber"-->
+<!--                        android:textAlignment="viewStart"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textColor="@color/primary_text"-->
+<!--                        android:textSize="14sp" />-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:gravity="start"
-                    android:orientation="horizontal">
+<!--                </LinearLayout>-->
 
-                    <Button
-                        style="@style/Widget.MyApp.ButtonCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="start|top"
-                        android:onClick="ViewTopic"
-                        android:paddingTop="20dp"
-                        android:text="@string/hint_topicnumber"
-                        android:textAlignment="viewStart"
-                        android:textAllCaps="false"
-                        android:textColor="@color/primary_text"
-                        android:textSize="15sp"
-                        tools:textSize="20sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="@string/hint_modulenumber"
-                        android:textColor="@color/primary_text"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:gravity="start"
-                    android:orientation="horizontal">
-
-                    <Button
-                        style="@style/Widget.MyApp.ButtonCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="start|top"
-                        android:paddingTop="20dp"
-                        android:text="@string/hint_topicnumber"
-                        android:textAlignment="viewStart"
-                        android:textAllCaps="false"
-                        android:textColor="@color/primary_text"
-                        android:textSize="15sp"
-                        tools:textSize="20sp"
-                        android:onClick="ViewTopic" />
-
-                    <Button
-                        android:id="@+id/button"
-                        style="@style/Widget.MyApp.ButtonCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="start|top"
-                        android:onClick="ViewTopic"
-                        android:paddingTop="20dp"
-                        android:text="@string/hint_topicnumber"
-                        android:textAlignment="viewStart"
-                        android:textAllCaps="false"
-                        android:textColor="@color/primary_text"
-                        android:textSize="15sp"
-                        tools:textSize="20sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="@string/hint_modulenumber"
-                        android:textColor="@color/primary_text"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="15dp"
-                    android:gravity="start"
-                    android:orientation="horizontal">
-
-                    <Button
-                        style="@style/Widget.MyApp.ButtonCard"
-                        android:layout_width="wrap_content"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="15dp"
-                        android:layout_marginEnd="15dp"
-                        android:layout_marginBottom="0dp"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:gravity="start|top"
-                        android:onClick="ViewTopic"
-                        android:paddingTop="20dp"
-                        android:text="@string/hint_topicnumber"
-                        android:textAlignment="viewStart"
-                        android:textAllCaps="false"
-                        android:textColor="@color/primary_text"
-                        android:textSize="15sp"
-                        tools:textSize="20sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
         </LinearLayout>
     </ScrollView>

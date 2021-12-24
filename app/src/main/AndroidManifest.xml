@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EndtermExam">
         <activity
+            android:name=".ViewQuiz"
+            android:exported="false" />
+        <activity
             android:name=".ViewAttendance"
             android:exported="false" />
         <activity
@@ -37,7 +40,7 @@
             android:name=".Dashboard"
             android:exported="false" />
         <activity
-            android:name=".courses"
+            android:name=".Courses"
             android:exported="false" />
     </application>
 

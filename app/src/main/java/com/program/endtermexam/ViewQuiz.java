@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ViewTopic extends AppCompatActivity {
+public class ViewQuiz extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_topic);
-
-        ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_coursetopic));
+        setContentView(R.layout.activity_view_quiz);
     }
 }

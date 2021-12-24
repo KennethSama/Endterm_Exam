@@ -10,6 +10,8 @@
     <string name="app_submit">Submit</string>
 
     <!-- Action App Bar -->
+    <string name="app_dash">Dashboard</string>
+    <string name="app_coursetopic">Course - Topic</string>
     <string name="app_courses">Courses</string>
     <string name="app_quizzes">Quizzes</string>
     <string name="app_attend">Attendances</string>
@@ -27,9 +29,6 @@
     <string name="hint_attendPerc">Attendance Percentage</string>
     <string name="hint_gradesnums">Grades Percentage</string>
 
-
-    <string name="hint_modulenumber">Module Number</string>
-    <string name="hint_topicnumber">Topic Number</string>
     <string name="hint_topicnumber_with_title">Topic Number - Topic Title</string>
     <string name="hint_quiznumber">Quiz No.</string>
     <string name="hint_quiztitle">Quiz Title</string>
@@ -37,4 +36,33 @@
     <string name="hint_itemnumber">Item No.</string>
     <string name="hint_multiplechoice_answer">Choices</string>
     <string name="hint_quiztime">Time: hh | mm | ss</string>
+
+    <!-- Courses -->
+    <string name="hint_module">Module</string>
+    <string name="hint_topic">Topic</string>
+
+    <string name="hint_quiz">Quiz</string>
+    <string name="hint_avail">Available</string>
+    <string name="hint_unavail">Expired</string>
+
+    <string name="hint_week">Week</string>
+    <string name="hint_day">Day</string>
+    <string name="hint_pres">Present</string>
+    <string name="hint_abs">Absent</string>
+
+<!--    <string name="hint_module">Grade</string>-->
+<!--    <string name="hint_topic">Topic</string>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

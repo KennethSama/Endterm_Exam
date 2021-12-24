@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white_primary"
     android:orientation="vertical"
-    tools:context=".courses">
+    tools:context=".Courses">
 
     <include
         android:id="@+id/actionbar_pacefy"

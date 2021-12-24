@@ -16,18 +16,20 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        new com.program.endtermexam.GoBack(null, this);
+        ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_dash));
         InitializeIntents();
     }
-
+    private void InitializeValues(){
+    }
     private void InitializeIntents(){
-        intent_viewAll = new Intent(Dashboard.this, courses.class);
+        intent_viewAll = new Intent(Dashboard.this, Courses.class);
         intent_viewCourse = new Intent(Dashboard.this, ViewCourse.class);
     }
     public void ViewAll(View view) {
-        Toast.makeText(this, String.format("View ID: %s", view.getId()), Toast.LENGTH_SHORT).show();
         String action_bar_title = null;
         String card_title = null;
+        Intent intent_next = null;
+        intent_next = intent_viewCourse;
         switch (view.getId()){
             case R.id.button_viewAllCourses: {
                 action_bar_title = getString(R.string.app_courses);
@@ -52,6 +54,8 @@ public class Dashboard extends AppCompatActivity {
         intent_viewAll.putExtra("card_name", card_title);
         intent_viewAll.putExtra("action_bar_name", action_bar_title);
         intent_viewAll.putExtra("course_name", getString(R.string.hint_coursename));
+        intent_viewAll.putExtra("next_intent", intent_next);
+
         startActivity(intent_viewAll);
     }
 
