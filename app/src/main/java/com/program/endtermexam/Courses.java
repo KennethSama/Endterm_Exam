@@ -18,8 +18,12 @@ public class Courses extends AppCompatActivity {
     private Toolbar actionbar_pacefy;
     private TextView textView_current_activityTitle;
     private LinearLayout layout_cardsParent;
+    private Intent current_intent;
     private Intent next_intent;
-    private Intent afterNext_intent;
+    private Intent intent_viewTopic;
+    private Intent intent_viewQuiz;
+    private Intent intent_viewAttend;
+    private Intent intent_viewGrades;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,10 @@ public class Courses extends AppCompatActivity {
         ExtendedLayoutAccess.AccessAppBar(actionbar_pacefy, this, null);
     }
     private void InitializeIntents(){
-        afterNext_intent = new Intent(Courses.this, ViewCourse.class);
+        intent_viewTopic = new Intent(Courses.this, ViewTopic.class);
+        intent_viewQuiz = new Intent(Courses.this, ViewQuiz.class);
+        intent_viewAttend = new Intent(Courses.this, ViewAttendance.class);
+
     }
     private void InitializeValues(){
         bundle_current = getIntent().getExtras();
@@ -44,7 +51,7 @@ public class Courses extends AppCompatActivity {
         String course_title = String.valueOf(bundle_current.getString("course_name"));
         String action_bar_title = String.valueOf(bundle_current.getString("action_bar_name"));
 
-        next_intent = bundle_current.getParcelable("next_intent");
+        current_intent = bundle_current.getParcelable("next_intent");
         LayoutInflater layoutInflater_cardButtons = (LayoutInflater)getSystemService(Courses.LAYOUT_INFLATER_SERVICE);
 
         for(int i=0; i < numberOfCardCourse; i++)
@@ -63,8 +70,7 @@ public class Courses extends AppCompatActivity {
         layout_cardsParent.addView(view);
     }
 
-    private void NextActivity(Button button, String course_name){
-//        String course_title = null;
+    public void NextActivity(Button button, String course_name){
         String buttonCard_title = null;
         String buttonCardLayout_header = null;
         String[] buttonTexts = new String[]{
@@ -78,23 +84,27 @@ public class Courses extends AppCompatActivity {
         if (buttonTexts[0].equals(text)) {
             buttonCard_title = getString(R.string.hint_topic);
             buttonCardLayout_header = getString(R.string.hint_module);
+            next_intent = intent_viewTopic;
         } else if (buttonTexts[1].equals(text)) {
             buttonCard_title = getString(R.string.hint_quiz);
             buttonCardLayout_header = getString(R.string.hint_module);
+            next_intent = intent_viewQuiz;
         } else if (buttonTexts[2].equals(text)) {
             buttonCard_title = getString(R.string.hint_day);
             buttonCardLayout_header = getString(R.string.hint_week);
+            next_intent = intent_viewAttend;
         } else if (buttonTexts[3].equals(text)) {
             buttonCard_title = "";
             buttonCardLayout_header = "";
+            next_intent = intent_viewGrades;
         }
-        next_intent.putExtra("button_card_name", buttonCard_title);
-        next_intent.putExtra("button_card_layout_header", buttonCardLayout_header);
-        next_intent.putExtra("course_name", course_name);
-        next_intent.putExtra("next_intent", afterNext_intent);
+        current_intent.putExtra("button_card_name", buttonCard_title);
+        current_intent.putExtra("button_card_layout_header", buttonCardLayout_header);
+        current_intent.putExtra("course_name", course_name);
+        current_intent.putExtra("next_intent", next_intent);
 
 
-        startActivity(next_intent);
+        startActivity(current_intent);
     }
 }
 

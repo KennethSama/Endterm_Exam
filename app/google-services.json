@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "778269557403",
+    "project_id": "endterm-exam",
+    "storage_bucket": "endterm-exam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778269557403:android:5ff4d6faf05bf79603bc3e",
+        "android_client_info": {
+          "package_name": "com.program.endtermexam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778269557403-8cu2657habau7qa68f41i3q1ppv9omnl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjJTOjIgKV3B5MF2ibnJuzojRNj2pMKEE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778269557403-8cu2657habau7qa68f41i3q1ppv9omnl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

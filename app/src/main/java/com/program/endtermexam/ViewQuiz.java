@@ -10,5 +10,6 @@ public class ViewQuiz extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_quiz);
+        ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.hint_quiz));
     }
 }

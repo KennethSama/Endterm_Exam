@@ -4,12 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ViewAttendance extends AppCompatActivity {
+public class TakeQuiz extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_attendance);
-        ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_attend));
+        setContentView(R.layout.activity_take_quiz);
     }
 }

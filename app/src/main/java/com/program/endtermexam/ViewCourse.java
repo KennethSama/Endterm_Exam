@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class ViewCourse extends AppCompatActivity {
-    private Intent intent_viewTopic;
+//    private Intent intent_viewTopic;
     private Intent next_intent;
     private int numberOfModules = new Random().nextInt(5);
     private LinearLayout linearLayout_courseModulesParent;
@@ -29,7 +29,7 @@ public class ViewCourse extends AppCompatActivity {
         ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_courses));
     }
     private void InitializeIntents(){
-        intent_viewTopic = new Intent(ViewCourse.this, ViewTopic.class);
+//        intent_viewTopic = new Intent(ViewCourse.this, ViewTopic.class);
     }
     private void InitializeValues() {
         bundle_current = getIntent().getExtras();
@@ -47,20 +47,23 @@ public class ViewCourse extends AppCompatActivity {
 
         LayoutInflater layoutInflater_cardButtons = (LayoutInflater) getSystemService(Courses.LAYOUT_INFLATER_SERVICE);
         for (int i = 0; i < numberOfModules; i++)
-            CreateTopicButtons(layoutInflater_cardButtons, buttonCard_title, buttonCardLayout_header);
+            CreateCardButtons(layoutInflater_cardButtons, buttonCard_title, buttonCardLayout_header);
     }
-    public void CreateTopicButtons(LayoutInflater inflater, String buttonCard_title, String buttonCardLayout_header){
+    public void CreateCardButtons(LayoutInflater inflater, String buttonCard_title, String buttonCardLayout_header){
         LinearLayout view = (LinearLayout) inflater.inflate(R.layout.cardbutton_layout, null);
         TextView textView_buttonCard_header = view.findViewById(R.id.textView_buttonCard_header);
         LinearLayout linearLayout_moduleTopics = view.findViewById(R.id.linearLayout_moduleTopics);
 
+        // TODO Add the new intent to the button_topic Extra
+
         int rand = new Random().nextInt(5);
         int randTopics =  rand == 0 ? 1 : rand;
+
         for (int n = 0; n < randTopics; n++) {
             RelativeLayout parent_button_topic = (RelativeLayout) inflater.inflate(R.layout.topic_button, null);
             Button button_topic = parent_button_topic.findViewById(R.id.button_topic);
             button_topic.setText(buttonCard_title);
-            button_topic.setOnClickListener(v -> ViewTopic());
+            button_topic.setOnClickListener(v ->  startActivity(next_intent));
             linearLayout_moduleTopics.addView(parent_button_topic);
         }
 
@@ -68,9 +71,5 @@ public class ViewCourse extends AppCompatActivity {
         linearLayout_courseModulesParent.addView(view);
 
 
-    }
-
-    public void ViewTopic() {
-        startActivity(intent_viewTopic);
     }
 }

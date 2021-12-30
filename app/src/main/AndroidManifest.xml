@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EndtermExam">
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TakeQuiz"
+            android:exported="false" />
+        <activity
+            android:name=".ViewGrades"
+            android:exported="false" />
+        <activity
             android:name=".ViewQuiz"
             android:exported="false" />
         <activity

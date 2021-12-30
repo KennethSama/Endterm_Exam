@@ -19,8 +19,6 @@ public class Dashboard extends AppCompatActivity {
         ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_dash));
         InitializeIntents();
     }
-    private void InitializeValues(){
-    }
     private void InitializeIntents(){
         intent_viewAll = new Intent(Dashboard.this, Courses.class);
         intent_viewCourse = new Intent(Dashboard.this, ViewCourse.class);

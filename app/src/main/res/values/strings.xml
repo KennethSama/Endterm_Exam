@@ -1,16 +1,31 @@
 <resources>
     <string name="app_name">Pacefy</string>
     <string name="app_login">LOG-IN</string>
+    <string name="app_logout">Log-out</string>
     <string name="app_signup">SIGN-UP</string>
     <string name="app_username">Username</string>
+    <string name="app_answer">Answer</string>
     <string name="type_inst">Instructor</string>
     <string name="type_stud">Student</string>
     <string name="app_next">Next</string>
     <string name="app_prev">Previous</string>
     <string name="app_submit">Submit</string>
+    <string name="app_lname">Last Name</string>
+    <string name="app_fname">First Name</string>
+    <string name="app_mname">Middle Name</string>
+    <string name="hint_loc">Location</string>
+
+    <string name="menu_Open">Open</string>
+    <string name="menu_Close">Close</string>
+
 
     <!-- Action App Bar -->
     <string name="app_dash">Dashboard</string>
+    <string name="app_prof">Profile</string>
+    <string name="app_help">Help</string>
+    <string name="app_auth">Authentication</string>
+    <string name="app_sett">Settings</string>
+    <string name="app_more">More</string>
     <string name="app_coursetopic">Course - Topic</string>
     <string name="app_courses">Courses</string>
     <string name="app_quizzes">Quizzes</string>
@@ -22,12 +37,21 @@
     <string name="hint_num_of_all_courses_grades">Number of Courses with Grades</string>
     <string name="hint_coursename">Course Name</string>
     <string name="hint_addcourse">Add New Course</string>
+    <string name="hint_fullname">Full Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_fulllocation">Full Location</string>
+    <string name="hint_program">Academic Program</string>
+
 
     <!-- Courses Activity-->
+    <string name="hint_user">User</string>
+
     <string name="hint_modulenums">Modules Number</string>
     <string name="hint_quizzesnums">Quizzes Number</string>
     <string name="hint_attendPerc">Attendance Percentage</string>
     <string name="hint_gradesnums">Grades Percentage</string>
+    <string name="hint_messageTitle">Error/Warning Title</string>
+    <string name="hint_sampleLongText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
     <string name="hint_topicnumber_with_title">Topic Number - Topic Title</string>
     <string name="hint_quiznumber">Quiz No.</string>
@@ -49,20 +73,11 @@
     <string name="hint_day">Day</string>
     <string name="hint_pres">Present</string>
     <string name="hint_abs">Absent</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<!--    <string name="hint_module">Grade</string>-->
-<!--    <string name="hint_topic">Topic</string>-->
-
-
-
-
-
-
-
-
-
-
-
+    <!--    <string name="hint_module">Grade</string>-->
+    <!--    <string name="hint_topic">Topic</string>-->
 
 
 </resources>

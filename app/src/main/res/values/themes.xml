@@ -20,5 +20,10 @@
     <style name="Widget.MyApp.ButtonCard" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/white</item>
     </style>
+    <style name="profile_pic_shape">
+        <item name="cornerSize">50%</item>
+        <item name="colorOnBackground">@color/no_color</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
 
 </resources>
