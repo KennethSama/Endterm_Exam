@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -24,6 +25,8 @@ public class Courses extends AppCompatActivity {
     private Intent intent_viewQuiz;
     private Intent intent_viewAttend;
     private Intent intent_viewGrades;
+
+    private RelativeLayout relativeLayout_modal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,10 @@ public class Courses extends AppCompatActivity {
         layout_cardsParent = findViewById(R.id.layout_cardsParent);
         actionbar_pacefy = findViewById(R.id.actionbar_pacefy);
         textView_current_activityTitle = actionbar_pacefy.findViewById(R.id.textView_current_activityTitle);
+
+        relativeLayout_modal = findViewById(R.id.modal_message);
+
+        ExtendedLayoutAccess.InitializeModal(relativeLayout_modal);
 
         String card_title = String.valueOf(bundle_current.getString("card_name"));
         String course_title = String.valueOf(bundle_current.getString("course_name"));

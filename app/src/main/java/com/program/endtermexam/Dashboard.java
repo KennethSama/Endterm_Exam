@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity {
-    private Intent intent_viewAll;
-    private Intent intent_viewCourse;
+    private Intent intent_viewAll, intent_viewCourse;
+    private RelativeLayout relativeLayout_modal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +18,25 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_dash));
+        ExtendedLayoutAccess.AccessNavBar(null, getString(R.string.app_dash));
         InitializeIntents();
+        InitializeValues();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ExtendedLayoutAccess.CheckConnection(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ExtendedLayoutAccess.RemoveHandler();
+    }
+    private void InitializeValues(){
+        relativeLayout_modal = findViewById(R.id.modal_message);
+
+        ExtendedLayoutAccess.InitializeModal(relativeLayout_modal);
     }
     private void InitializeIntents(){
         intent_viewAll = new Intent(Dashboard.this, Courses.class);

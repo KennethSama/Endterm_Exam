@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,11 +8,13 @@
     android:orientation="vertical"
     tools:context=".Courses">
 
-    <include
-        android:id="@+id/actionbar_pacefy"
-        layout="@layout/pacefy_actionbar" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/hidden_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
 
     <ScrollView
+        android:layout_below="@id/hidden_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,4 +30,23 @@
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <include
+        android:id="@+id/actionbar_pacefy"
+        layout="@layout/pacefy_actionbar" />
+
+    <include
+        android:id="@+id/navbar_layout"
+        layout="@layout/navbar_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/modal_message"
+        layout="@layout/modal_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/progressBar_login"
+        layout="@layout/progress_bar"
+        android:visibility="gone"/>
+</RelativeLayout>

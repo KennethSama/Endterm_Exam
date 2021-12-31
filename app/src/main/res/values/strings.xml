@@ -13,6 +13,7 @@
     <string name="app_lname">Last Name</string>
     <string name="app_fname">First Name</string>
     <string name="app_mname">Middle Name</string>
+    <string name="app_reset">Reset Password</string>
     <string name="hint_loc">Location</string>
 
     <string name="menu_Open">Open</string>

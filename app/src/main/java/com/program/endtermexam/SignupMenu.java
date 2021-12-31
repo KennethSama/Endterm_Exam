@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -17,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.IOException;
 
 public class SignupMenu extends AppCompatActivity {
     private Intent intent_login, intent_dashboard;
@@ -41,19 +44,13 @@ public class SignupMenu extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-//        ExtendedLayoutAccess.CheckConnection(this);
-        ExtendedLayoutAccess.CheckConnectivity(this);
+        ExtendedLayoutAccess.CheckConnection(this);
     }
 
     @Override
     protected void onPause() {
-        if (ExtendedLayoutAccess.monitoringConnectivity) {
-            final ConnectivityManager connectivityManager
-                    = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-            connectivityManager.unregisterNetworkCallback(ExtendedLayoutAccess.connectivityCallback);
-            ExtendedLayoutAccess.monitoringConnectivity = false;
-        }
         super.onPause();
+        ExtendedLayoutAccess.RemoveHandler();
     }
 
     private void InitializeIntents(){
@@ -80,8 +77,7 @@ public class SignupMenu extends AppCompatActivity {
     }
 
     public void OnLogin(View view) {
-        startActivity(intent_login);
-        finish();
+        ExtendedLayoutAccess.OnLogin(this);
     }
     private boolean IsEmailValid(CharSequence email){
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
@@ -163,21 +159,22 @@ public class SignupMenu extends AppCompatActivity {
                         task -> {
                             if (task.isSuccessful()){
                                 reference.child("User_".concat(FirebaseAuth.getInstance().getCurrentUser().getUid()))
-                                        .setValue(userHelper).addOnCompleteListener(task1 -> {
-                                            if (task1.isSuccessful()) {
-                                                FirebaseUser current_user = firebaseAuth.getCurrentUser();
-                                                if (current_user.isEmailVerified()){
-                                                    Toast.makeText(SignupMenu.this, "User Has been registered!", Toast.LENGTH_SHORT).show();
-                                                    ExtendedLayoutAccess.HideModal();
-                                                    startActivity(intent_dashboard);
-                                                    finish();
-                                                }else{
-                                                    current_user.sendEmailVerification();
-                                                    ExtendedLayoutAccess.ShowModal("Email Verification", "Please check your email to verify account. This method will help us confirm if your email is legitimate.");
-                                                }
-                                            }else
-                                                Toast.makeText(SignupMenu.this, "Invalid Authentication! User has not been registered", Toast.LENGTH_SHORT).show();
-                                        });
+                                    .setValue(userHelper).addOnCompleteListener(task1 -> {
+                                        if (task1.isSuccessful()) { FirebaseUser current_user = firebaseAuth.getCurrentUser();
+                                            if (current_user.isEmailVerified()){
+                                                Toast.makeText(SignupMenu.this, "User Has been registered!", Toast.LENGTH_SHORT).show();
+                                                ExtendedLayoutAccess.HideModal();
+                                                startActivity(intent_dashboard);
+                                                finish();
+                                            }else{
+                                                ExtendedLayoutAccess.ShowModal("Email Verification", "Please check your email to verify account. This method will help us confirm if your email is legitimate.");
+                                                current_user.sendEmailVerification();
+                                            }
+                                        }else {
+                                            Toast.makeText(SignupMenu.this, "Invalid Authentication! User has not been registered", Toast.LENGTH_SHORT).show();
+                                        }
+                                    relativeLayout_modal.setVisibility(View.GONE);
+                                });
                         }
                         });
     }

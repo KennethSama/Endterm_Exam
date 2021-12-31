@@ -348,4 +348,8 @@
         android:id="@+id/modal_message"
         layout="@layout/modal_layout"
         android:visibility="gone" />
+    <include
+        android:id="@+id/progressBar2"
+        layout="@layout/progress_bar"
+        android:visibility="gone"/>
 </RelativeLayout>

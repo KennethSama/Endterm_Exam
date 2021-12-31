@@ -13,7 +13,6 @@ import android.widget.TextView;
 import java.util.Random;
 
 public class ViewCourse extends AppCompatActivity {
-//    private Intent intent_viewTopic;
     private Intent next_intent;
     private int numberOfModules = new Random().nextInt(5);
     private LinearLayout linearLayout_courseModulesParent;
@@ -28,9 +27,7 @@ public class ViewCourse extends AppCompatActivity {
         InitializeIntents();
         ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_courses));
     }
-    private void InitializeIntents(){
-//        intent_viewTopic = new Intent(ViewCourse.this, ViewTopic.class);
-    }
+    private void InitializeIntents(){ }
     private void InitializeValues() {
         bundle_current = getIntent().getExtras();
         button_noTouchCourse = findViewById(R.id.button_noTouchCourse);
