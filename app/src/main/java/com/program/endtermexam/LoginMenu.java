@@ -1,26 +1,23 @@
 package com.program.endtermexam;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
+
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
-import java.io.IOException;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.HashMap;
 
 public class LoginMenu extends AppCompatActivity {
-    private Intent intent_signup, intent_dashboard, intent_resetPassword;
+    private Intent intent_dashboard;
     private FirebaseAuth firebaseAuth;
     private TextInputLayout textInputLayout_email, textInputLayout_password;
     private RelativeLayout relativeLayout_modal;
@@ -93,8 +90,20 @@ public class LoginMenu extends AppCompatActivity {
             ExtendedLayoutAccess.CheckConnection(this);
             if (task.isSuccessful()){
                 progressBar.setVisibility(View.GONE);
-                startActivity(intent_dashboard);
-                finish();
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null){
+                    CurrentUser currentUser = new CurrentUser("User_".concat(user.getUid()), password);
+                    currentUser.InitializeUserData();
+                    HashMap userMap =  new HashMap();
+                    userMap.put("password", currentUser.getUserPassword());
+                    currentUser.getDatabaseReference_user().child(currentUser.getUserID()).updateChildren(userMap);
+                    if (user.isEmailVerified())
+                        startActivity(intent_dashboard);
+                    else
+                        startActivity(new Intent(LoginMenu.this, VerifyAccountMenu.class));
+                    finish();
+                }else
+                    Toast.makeText(LoginMenu.this, "user not logged in!\nPlease contact the technical support team", Toast.LENGTH_LONG).show();
             }else {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(LoginMenu.this, "Account not found!\nPlease check your credentials/details", Toast.LENGTH_LONG).show();

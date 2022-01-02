@@ -1,6 +1,8 @@
 package com.program.endtermexam;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +15,12 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +39,7 @@ public class SignupMenu extends AppCompatActivity {
     private FirebaseDatabase rootNode;
     private DatabaseReference reference;
     private RelativeLayout relativeLayout_modal;
+    private ConstraintLayout progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +77,10 @@ public class SignupMenu extends AppCompatActivity {
         radioGroup_type = findViewById(R.id.radioGroup_Type);
 
         relativeLayout_modal = findViewById(R.id.modal_message);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        progressBar =  findViewById(R.id.progressBar3);
 
         ExtendedLayoutAccess.InitializeModal(relativeLayout_modal);
 
@@ -153,29 +165,151 @@ public class SignupMenu extends AppCompatActivity {
         else
             textInputLayout_email.setError(null);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.createUserWithEmailAndPassword(email, pass)
-                .addOnCompleteListener(
-                        task -> {
-                            if (task.isSuccessful()){
-                                reference.child("User_".concat(FirebaseAuth.getInstance().getCurrentUser().getUid()))
-                                    .setValue(userHelper).addOnCompleteListener(task1 -> {
-                                        if (task1.isSuccessful()) { FirebaseUser current_user = firebaseAuth.getCurrentUser();
-                                            if (current_user.isEmailVerified()){
+        progressBar.setVisibility(View.VISIBLE);
+        firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(
+                task -> {
+                    if (task.isSuccessful()){
+                        final FirebaseUser current_user = firebaseAuth.getCurrentUser();
+                        current_user.sendEmailVerification().addOnCompleteListener(
+                                task1 -> {
+                                    if (task1.isSuccessful()) {
+                                        reference.child("User_".concat(current_user.getUid())).setValue(userHelper).addOnCompleteListener(task2 -> {
+                                            if (task2.isSuccessful()) {
                                                 Toast.makeText(SignupMenu.this, "User Has been registered!", Toast.LENGTH_SHORT).show();
                                                 ExtendedLayoutAccess.HideModal();
-                                                startActivity(intent_dashboard);
+                                                Intent intent_verify = new Intent(this, VerifyAccountMenu.class);
+                                                startActivity(intent_verify);
                                                 finish();
-                                            }else{
-                                                ExtendedLayoutAccess.ShowModal("Email Verification", "Please check your email to verify account. This method will help us confirm if your email is legitimate.");
-                                                current_user.sendEmailVerification();
-                                            }
-                                        }else {
-                                            Toast.makeText(SignupMenu.this, "Invalid Authentication! User has not been registered", Toast.LENGTH_SHORT).show();
-                                        }
-                                    relativeLayout_modal.setVisibility(View.GONE);
+                                            } else
+                                                Toast.makeText(SignupMenu.this, "Invalid Authentication! User has not been registered", Toast.LENGTH_SHORT).show();
+                                        });
+                                    }
+                                    else{
+                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(SignupMenu.this, "Fail to Send Verification Email! User has not been registered", Toast.LENGTH_SHORT).show();
+                                    }
                                 });
+                    }
+                })
+                .addOnFailureListener(e ->
+                        {
+                            Toast.makeText(SignupMenu.this, "Authentication Failure! Email has already registered.\nPlease try another one ", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
-                        });
+                );
+
+//        progressBar.setVisibility(View.VISIBLE);
+////        ExtendedLayoutAccess.ShowModal("Email Verification", "Please check your email to verify account. This method will help us confirm if your email is legitimate.");
+//        firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(
+//                task -> {
+//                    if (task.isSuccessful()){
+//                        final FirebaseUser current_user = firebaseAuth.getCurrentUser();
+//                        current_user.sendEmailVerification().addOnCompleteListener(
+//                                task1 -> {
+//                                    if (task1.isSuccessful()) {
+//                                        Intent intent_verify = new Intent(this, VerifyAccountMenu.class);
+//                                        intent_verify.putExtra("extra_email", email).putExtra("extra_fname",fname)
+//                                                .putExtra("extra_mname", mname).putExtra("extra_lname",lname)
+//                                                .putExtra("extra_pass",pass).putExtra("extra_program", program)
+//                                                .putExtra("extra_location", location).putExtra("extra_type", type);
+//                                        startActivity(intent_verify);
+//                                        finish();
+//                                    }else{
+//                                        Toast.makeText(SignupMenu.this, "Fail to Send Verification Email! User has not been registered", Toast.LENGTH_SHORT).show();
+//                                    }
+//                        });
+//                    }
+//                })
+//                .addOnFailureListener(e ->
+//                        {
+//                            Toast.makeText(SignupMenu.this, "Authentication Failure! Email has already registered.\nPlease try another one ", Toast.LENGTH_SHORT).show();
+//                            progressBar.setVisibility(View.GONE);
+//                        }
+//                );
+
+
+//        final FirebaseUser current_user = firebaseAuth.getCurrentUser();
+//        progressBar.setVisibility(View.VISIBLE);
+//        current_user.sendEmailVerification()
+//                .addOnSuccessListener(unused -> {
+//                    if (current_user.isEmailVerified()) {
+//                        firebaseAuth.createUserWithEmailAndPassword(email, pass)
+//                                .addOnCompleteListener(
+//                                        task -> {
+//                                            if (task.isSuccessful()){
+//                                                reference.child("User_".concat(FirebaseAuth.getInstance().getCurrentUser().getUid())).setValue(userHelper).addOnCompleteListener(task12 -> {
+//                                                    if (task12.isSuccessful()){
+//                                                        Toast.makeText(SignupMenu.this, "User Has been registered!", Toast.LENGTH_SHORT).show();
+//                                                        ExtendedLayoutAccess.HideModal();
+//                                                        startActivity(intent_dashboard);
+//                                                        finish();
+//                                                    }
+//                                                });
+//                                            }else
+//                                                Toast.makeText(SignupMenu.this, "Invalid Authentication! User has not been registered", Toast.LENGTH_SHORT).show();
+//                                        });
+//                    }
+//                    else
+//                        ExtendedLayoutAccess.ShowModal("Email Verification", "Please check your email to verify account. This method will help us confirm if your email is legitimate.");
+//                })
+//                .addOnFailureListener(
+//                        e -> { Toast.makeText(SignupMenu.this, "Authentication Failure! Fail to register user credential.\nPlease check your email. ", Toast.LENGTH_SHORT).show(); }
+//                );
+
+
+//        final FirebaseUser current_user = firebaseAuth.getCurrentUser();
+//        progressBar.setVisibility(View.VISIBLE);
+//        current_user.sendEmailVerification()
+//            .addOnSuccessListener(unused -> {
+//                if (current_user.isEmailVerified()) {
+//                    firebaseAuth.createUserWithEmailAndPassword(email, pass)
+//                            .addOnCompleteListener(
+//                                    task -> {
+//                                        if (task.isSuccessful()){
+//                                            reference.child("User_".concat(FirebaseAuth.getInstance().getCurrentUser().getUid())).setValue(userHelper).addOnCompleteListener(task12 -> {
+//                                              if (task12.isSuccessful()){
+//                                                  Toast.makeText(SignupMenu.this, "User Has been registered!", Toast.LENGTH_SHORT).show();
+//                                                  ExtendedLayoutAccess.HideModal();
+//                                                  startActivity(intent_dashboard);
+//                                                  finish();
+//                                              }
+//                                            });
+//                                        }else
+//                                            Toast.makeText(SignupMenu.this, "Invalid Authentication! User has not been registered", Toast.LENGTH_SHORT).show();
+//                                    });
+//                }
+//                else
+//                    ExtendedLayoutAccess.ShowModal("Email Verification", "Please check your email to verify account. This method will help us confirm if your email is legitimate.");
+//            })
+//            .addOnFailureListener(
+//                    e -> { Toast.makeText(SignupMenu.this, "Authentication Failure! Fail to register user credential.\nPlease check your email. ", Toast.LENGTH_SHORT).show(); }
+//            );
+
+//        firebaseAuth.createUserWithEmailAndPassword(email, pass)
+//                .addOnCompleteListener(
+//                        task -> {
+//                            if (task.isSuccessful()){
+//                                reference.child("User_".concat(FirebaseAuth.getInstance().getCurrentUser().getUid()))
+//                                    .setValue(userHelper).addOnCompleteListener(task1 -> {
+//                                        if (task1.isSuccessful()) {
+//                                            FirebaseUser current_user = firebaseAuth.getCurrentUser();
+//                                            if (current_user.isEmailVerified()){
+//                                                Toast.makeText(SignupMenu.this, "User Has been registered!", Toast.LENGTH_SHORT).show();
+//                                                ExtendedLayoutAccess.HideModal();
+//                                                startActivity(intent_dashboard);
+//                                                finish();
+//                                            }else{
+//                                                ExtendedLayoutAccess.ShowModal("Email Verification", "Please check your email to verify account. This method will help us confirm if your email is legitimate.");
+//                                                current_user.sendEmailVerification();
+//                                            }
+//                                        }else {
+//                                            Toast.makeText(SignupMenu.this, "Invalid Authentication! User has not been registered", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    relativeLayout_modal.setVisibility(View.GONE);
+//                                })
+//                                .addOnFailureListener(e -> Toast.makeText(SignupMenu.this, "Authentication Failure! Fail to register user credential.\nPlease check your email. ", Toast.LENGTH_SHORT).show());
+//                        }
+//                        })
+//        .addOnFailureListener(e -> Toast.makeText(SignupMenu.this, "Authentication Failure! Fail to register user credential.\nPlease check your email. ", Toast.LENGTH_SHORT).show());
     }
 }

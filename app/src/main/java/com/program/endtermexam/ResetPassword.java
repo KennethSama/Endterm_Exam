@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 
 public class ResetPassword extends AppCompatActivity {
     private TextInputLayout textInputLayout_email;
@@ -40,7 +41,7 @@ public class ResetPassword extends AppCompatActivity {
 
     public void OnLogin(View view) { ExtendedLayoutAccess.OnLogin(this); }
 
-    public void OnSingup(View view) { ExtendedLayoutAccess.OnSignup(this);}
+    public void OnSignup(View view) { ExtendedLayoutAccess.OnSignup(this);}
 
     private boolean IsEmailValid(CharSequence email){
         return Patterns.EMAIL_ADDRESS.matcher(email).matches();

@@ -110,7 +110,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/app_fname"
-                        android:inputType="textPersonName"
+                        android:inputType="textPersonName|textCapWords"
                         android:paddingStart="16dp"
                         android:textColor="@color/primary_text"
                         android:textSize="16sp" />
@@ -133,7 +133,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/app_mname"
-                        android:inputType="textPersonName"
+                        android:inputType="textPersonName|textCapWords"
                         android:paddingStart="16dp"
                         android:textColor="@color/primary_text"
                         android:textSize="16sp" />
@@ -156,7 +156,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/app_lname"
-                        android:inputType="textPersonName"
+                        android:inputType="textPersonName|textCapWords"
                         android:paddingStart="16dp"
                         android:textColor="@color/primary_text"
                         android:textSize="16sp" />
@@ -204,7 +204,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_program"
-                        android:inputType="textAutoComplete"
+                        android:inputType="none|textAutoComplete|textCapWords"
                         android:padding="8dp"
                         android:textColor="@color/primary_text"
                         android:textSize="16sp" />
@@ -226,12 +226,12 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/textInputEditText_Location"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_loc"
-                        android:inputType="textAutoComplete"
+                        android:inputType="none|textAutoComplete|textCapWords"
                         android:padding="8dp"
                         android:textColor="@color/primary_text"
-                        android:textSize="16sp"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="16sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -349,7 +349,7 @@
         layout="@layout/modal_layout"
         android:visibility="gone" />
     <include
-        android:id="@+id/progressBar2"
+        android:id="@+id/progressBar3"
         layout="@layout/progress_bar"
         android:visibility="gone"/>
 </RelativeLayout>
