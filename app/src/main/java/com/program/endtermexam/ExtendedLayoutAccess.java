@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.IdRes;
 import androidx.appcompat.app.AlertDialog;
@@ -35,13 +36,15 @@ import java.io.IOException;
 import java.util.LinkedList;
 
 public final class ExtendedLayoutAccess{
-    private static ImageView imageView_icon2;
-    private static ImageView imageView_menu;
+    private static ImageView imageView_icon2, imageView_menu;
     private static TextView textView_current_activityTitle;
     private static RelativeLayout relativeLayout_modalMessage;
     private static Activity current_activity;
-    private static TextView textView_messageTitle;
-    private static TextView textView_message;
+    private static TextView textView_messageTitle, textView_message;
+    private static LinearLayout navbar_header;
+    private static TextView textView_fullname, textView_email, textView_location, textView_program;
+
+
 
     private static LinkedList<MaterialButton> nav_buttons;
     private static LinearLayout navbar_menu;
@@ -49,8 +52,8 @@ public final class ExtendedLayoutAccess{
     private static Handler delayHandler = new Handler();
     private static Runnable runnable;
     private static int delay = 5*1000;
-    private static MaterialButton current_navBarButton;
-    private static MaterialButton logout_navBarButton;
+    private static MaterialButton current_navBarButton, dashboard_navBarButton, profile_navBarButton,
+            settings_navBarButton, help_navBarButton, logout_navBarButton;
     private static ImageView imageView_goBack;
 
     private static RelativeLayout nav_bar;
@@ -76,14 +79,33 @@ public final class ExtendedLayoutAccess{
         }
         Log.d("ClassName", current_activity.getClass().toString());
     }
-    public static void AccessNavBar(RelativeLayout relativeLayout_navbar, String activityTitle){
+    public static void AccessNavBar(RelativeLayout relativeLayout_navbar, String activityTitle, String fullname, String email, String location, String program){
         if (relativeLayout_navbar == null)
             relativeLayout_navbar = current_activity.findViewById(R.id.navbar_layout);
 
         nav_bar = relativeLayout_navbar;
         nav_buttons = new LinkedList<>();
         navbar_menu = nav_bar.findViewById(R.id.navbar_menu);
+        navbar_header = nav_bar.findViewById(R.id.navbar_header);
         imageView_goBack = nav_bar.findViewById(R.id.button_goBack);
+
+        logout_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_logout);
+        dashboard_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_dashboard);
+        profile_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_profile);
+        settings_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_settings);
+        help_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_help);
+
+        textView_fullname = (TextView) navbar_header.findViewById(R.id.textView_fullname);
+        textView_email = (TextView) navbar_header.findViewById(R.id.textView_email);
+        textView_location = (TextView) navbar_header.findViewById(R.id.textView_location);
+        textView_program = (TextView) navbar_header.findViewById(R.id.textView_program);
+
+        Log.d("Data", String.format("%s %s %s %s", fullname, email, location, program));
+
+        textView_fullname.setText(fullname);
+        textView_email.setText(email);
+        textView_location.setText(location);
+        textView_program.setText(program);
 
         imageView_goBack.setOnClickListener(v -> { HideNavBar(); });
 
@@ -96,8 +118,17 @@ public final class ExtendedLayoutAccess{
                 current_navBarButton.setTextColor(ContextCompat.getColor(current_activity, R.color.white_primary));
             }
         }
-        logout_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_logout);
+        if (current_navBarButton.getText().equals(current_activity.getResources().getString(R.string.app_dash)))
+            HideNavBar();
+        else
+            dashboard_navBarButton.setOnClickListener(v->{ OnDashboard(current_activity); });
+        if (current_navBarButton.getText().equals(current_activity.getResources().getString(R.string.app_dash)))
+            HideNavBar();
+        else
+            profile_navBarButton.setOnClickListener(v->{ OnProfile(current_activity); });
         logout_navBarButton.setOnClickListener(v -> { OnLogout(current_activity); });
+        help_navBarButton.setOnClickListener(v -> { OnUnavailable(current_activity); });
+        settings_navBarButton.setOnClickListener(v -> { OnUnavailable(current_activity); });
     }
     public static void ShowNavBar(){ nav_bar.setVisibility(View.VISIBLE); }
     public static void HideNavBar(){ nav_bar.setVisibility(View.GONE); }
@@ -128,6 +159,17 @@ public final class ExtendedLayoutAccess{
         activity.startActivity(intent);
         activity.finish();
     }
+    public static void OnProfile(Activity activity){
+        Intent intent = new Intent(activity.getBaseContext(), ProfileMenu.class);
+        activity.startActivity(intent);
+        activity.finish();
+    }
+    public static void OnDashboard(Activity activity){
+        Intent intent = new Intent(activity.getBaseContext(), Dashboard.class);
+        activity.startActivity(intent);
+        activity.finish();
+    }
+    public static void OnUnavailable(Context context){ Toast.makeText(context, "Feature not avaible on free Accounts. \n Please subscribe to unlock.", Toast.LENGTH_LONG).show(); }
 
     public static void ForgotPassword(Activity activity) {
         Intent intent = new Intent(activity.getBaseContext(), ResetPassword.class);
@@ -142,6 +184,7 @@ public final class ExtendedLayoutAccess{
                     FirebaseAuth.getInstance().signOut();
                     OnLogin(activity);
                     dialog.cancel();
+                    new CurrentUser().LogoutSession();
                 });
         alert_logut.setNegativeButton("Cancel", (dialog, which) -> { dialog.cancel(); });
         AlertDialog alertDialog = alert_logut.create();

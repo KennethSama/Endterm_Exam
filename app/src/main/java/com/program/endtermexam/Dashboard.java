@@ -1,16 +1,44 @@
 package com.program.endtermexam;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Locale;
 
 public class Dashboard extends AppCompatActivity {
     private Intent intent_viewAll, intent_viewCourse;
     private RelativeLayout relativeLayout_modal;
+    private TextView textView_user;
+    private ConstraintLayout progressBar_login;
+//    private Bundle bundle;
+//    private ArrayList<Object> currentUserData;
+    private ArrayList<Object> userDataList;
+    private HashMap<String, String> userDetails;
+    private CurrentUser currentUser;
+    private LinearLayout linearLayout_studentCourse;
+    private LinearLayout linearLayout_teacherCourse;
+    private LinearLayout layout9_student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +46,20 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
         ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_dash));
-        ExtendedLayoutAccess.AccessNavBar(null, getString(R.string.app_dash));
         InitializeIntents();
         InitializeValues();
+
+        Log.d("userDetails", currentUser.GetUserSession().toString());
+//        PassValues();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        InitializeContents();
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -33,10 +71,48 @@ public class Dashboard extends AppCompatActivity {
         super.onPause();
         ExtendedLayoutAccess.RemoveHandler();
     }
+
     private void InitializeValues(){
+
         relativeLayout_modal = findViewById(R.id.modal_message);
+        textView_user = findViewById(R.id.textView_user);
+        progressBar_login = findViewById(R.id.progressBar_login);
+        linearLayout_studentCourse = findViewById(R.id.linearLayout_studentCourse);
+        linearLayout_teacherCourse = findViewById(R.id.linearLayout_teacherCourse);
+        layout9_student = findViewById(R.id.layout9_student);
+
+        InitiaizeData();
 
         ExtendedLayoutAccess.InitializeModal(relativeLayout_modal);
+    }
+    private void InitiaizeData(){
+        progressBar_login.setVisibility(View.VISIBLE);
+        currentUser = new CurrentUser();
+        currentUser.InitializeUserData();
+        currentUser.InitializeUserID();
+        currentUser.SetUserData(this);
+        userDataList = new ArrayList<>();
+    }
+    private void InitializeContents(){
+        new Handler().postDelayed(() -> {
+            if(currentUser.canUpdate){
+                progressBar_login.setVisibility(View.GONE);
+                currentUser.canUpdate = false;
+                userDetails = currentUser.GetUserSession();
+                textView_user.setText(userDetails.get("firstName"));
+                String fullname = userDetails.get("firstName").concat(" " + userDetails.get("middleName").charAt(0) + ". " + userDetails.get("lastName"));
+                Log.d("Fullname", fullname);
+                ExtendedLayoutAccess.AccessNavBar(null, getString(R.string.app_dash)
+                , fullname
+                , userDetails.get("email"), userDetails.get("location"), userDetails.get("academicProgram"));
+                if (userDetails.get("type").toUpperCase().equals(getResources().getString(R.string.type_stud).toUpperCase()))
+                    linearLayout_teacherCourse.setVisibility(View.GONE);
+                else {
+                    linearLayout_studentCourse.setVisibility(View.GONE);
+                    layout9_student.setVisibility(View.GONE);
+                }
+            }
+        }, 3000);
     }
     private void InitializeIntents(){
         intent_viewAll = new Intent(Dashboard.this, Courses.class);

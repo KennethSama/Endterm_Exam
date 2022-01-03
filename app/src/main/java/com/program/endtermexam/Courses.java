@@ -35,7 +35,7 @@ public class Courses extends AppCompatActivity {
         InitializeIntents();
         InitializeValues();
 
-        ExtendedLayoutAccess.AccessAppBar(actionbar_pacefy, this, null);
+        ExtendedLayoutAccess.AccessAppBar(null, this, null);
     }
     private void InitializeIntents(){
         intent_viewTopic = new Intent(Courses.this, ViewTopic.class);

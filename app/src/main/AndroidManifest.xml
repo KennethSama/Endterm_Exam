@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EndtermExam">
         <activity
+            android:name=".ProfileMenu"
+            android:exported="false" />
+        <activity
             android:name=".VerifyAccountMenu"
             android:exported="false" />
         <activity

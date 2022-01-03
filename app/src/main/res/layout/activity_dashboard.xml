@@ -30,6 +30,7 @@
                     android:layout_height="22dp" />
 
                 <LinearLayout
+                    android:id="@+id/layout9_student"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="30dp"
@@ -70,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/quicksand_bold"
-                        android:text="You have No. tasks today"
+                        android:text="Check your task/s for today!"
                         android:textColor="@color/primary_text"
                         android:textSize="22sp" />
 
@@ -85,6 +86,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayout_studentCourse"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="30dp"
@@ -175,6 +177,75 @@
                 <Space
                     android:layout_width="match_parent"
                     android:layout_height="20dp" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout_teacherCourse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="Courses"
+                            android:textColor="@color/primary_text"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/button_viewAllQuizzes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:onClick="ViewAll"
+                            android:text="View All"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/dark_accent"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:gravity="start"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button_viewAllQuizzes2"
+                            style="@style/Widget.MyApp.ButtonCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="15dp"
+                            android:layout_marginBottom="0dp"
+                            android:drawableLeft="@drawable/ic_baseline_insert_chart_outlined_24"
+                            android:fontFamily="@font/quicksand_medium"
+                            android:gravity="bottom|start"
+                            android:onClick="ViewAll"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="20dp"
+                            android:text="@string/hint_num_of_all_courses_quizzes"
+                            android:textAlignment="viewStart"
+                            android:textAllCaps="false"
+                            android:textColor="@color/primary_text"
+                            android:textSize="15sp"
+                            app:cornerRadius="15dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
