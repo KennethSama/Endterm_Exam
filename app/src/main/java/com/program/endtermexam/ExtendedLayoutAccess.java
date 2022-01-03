@@ -71,7 +71,7 @@ public final class ExtendedLayoutAccess{
         textView_current_activityTitle = actionbar_pacefy.findViewById(R.id.textView_current_activityTitle);
 
         imageView_menu.setOnClickListener(v -> { ShowNavBar();});
-        if (current_activity.getClass().equals(Dashboard.class))
+        if (current_activity.getClass().equals(Dashboard.class) || current_activity.getClass().equals(ProfileMenu.class))
             imageView_icon2.setImageResource(R.drawable.ic_icon_2);
         if (appbarTitle != null && !(current_activity.getClass().equals(Dashboard.class))) {
             textView_current_activityTitle.setText(appbarTitle);
@@ -118,17 +118,25 @@ public final class ExtendedLayoutAccess{
                 current_navBarButton.setTextColor(ContextCompat.getColor(current_activity, R.color.white_primary));
             }
         }
-        if (current_navBarButton.getText().equals(current_activity.getResources().getString(R.string.app_dash)))
-            HideNavBar();
+//        if (current_navBarButton.getText().equals(current_activity.getResources().getString(R.string.app_dash)))
+//            dashboard_navBarButton.setOnClickListener(v-> HideNavBar() );
+//        else
+
+//        if (current_navBarButton.getText().equals(current_activity.getResources().getString(R.string.app_dash)))
+//            profile_navBarButton.setOnClickListener(v-> HideNavBar() );
+        if (current_activity.getClass().equals(Dashboard.class))
+            dashboard_navBarButton.setOnClickListener(v-> HideNavBar() );
         else
-            dashboard_navBarButton.setOnClickListener(v->{ OnDashboard(current_activity); });
-        if (current_navBarButton.getText().equals(current_activity.getResources().getString(R.string.app_dash)))
-            HideNavBar();
+            dashboard_navBarButton.setOnClickListener(v-> OnDashboard(current_activity) );
+
+        if (current_activity.getClass().equals(ProfileMenu.class))
+            profile_navBarButton.setOnClickListener(v-> HideNavBar() );
         else
-            profile_navBarButton.setOnClickListener(v->{ OnProfile(current_activity); });
-        logout_navBarButton.setOnClickListener(v -> { OnLogout(current_activity); });
-        help_navBarButton.setOnClickListener(v -> { OnUnavailable(current_activity); });
-        settings_navBarButton.setOnClickListener(v -> { OnUnavailable(current_activity); });
+            profile_navBarButton.setOnClickListener(v-> OnProfile(current_activity) );
+
+        logout_navBarButton.setOnClickListener(v -> OnLogout(current_activity) );
+        help_navBarButton.setOnClickListener(v -> OnUnavailable(current_activity) );
+        settings_navBarButton.setOnClickListener(v -> OnUnavailable(current_activity) );
     }
     public static void ShowNavBar(){ nav_bar.setVisibility(View.VISIBLE); }
     public static void HideNavBar(){ nav_bar.setVisibility(View.GONE); }

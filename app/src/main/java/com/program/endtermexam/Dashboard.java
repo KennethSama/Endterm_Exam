@@ -33,7 +33,7 @@ public class Dashboard extends AppCompatActivity {
     private ConstraintLayout progressBar_login;
 //    private Bundle bundle;
 //    private ArrayList<Object> currentUserData;
-    private ArrayList<Object> userDataList;
+//    private ArrayList<Object> userDataList;
     private HashMap<String, String> userDetails;
     private CurrentUser currentUser;
     private LinearLayout linearLayout_studentCourse;
@@ -56,7 +56,6 @@ public class Dashboard extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         InitializeContents();
     }
 
@@ -88,10 +87,10 @@ public class Dashboard extends AppCompatActivity {
     private void InitiaizeData(){
         progressBar_login.setVisibility(View.VISIBLE);
         currentUser = new CurrentUser();
-        currentUser.InitializeUserData();
+        currentUser.InitializeUserData(true);
         currentUser.InitializeUserID();
         currentUser.SetUserData(this);
-        userDataList = new ArrayList<>();
+//        userDataList = new ArrayList<>();
     }
     private void InitializeContents(){
         new Handler().postDelayed(() -> {
@@ -101,7 +100,6 @@ public class Dashboard extends AppCompatActivity {
                 userDetails = currentUser.GetUserSession();
                 textView_user.setText(userDetails.get("firstName"));
                 String fullname = userDetails.get("firstName").concat(" " + userDetails.get("middleName").charAt(0) + ". " + userDetails.get("lastName"));
-                Log.d("Fullname", fullname);
                 ExtendedLayoutAccess.AccessNavBar(null, getString(R.string.app_dash)
                 , fullname
                 , userDetails.get("email"), userDetails.get("location"), userDetails.get("academicProgram"));

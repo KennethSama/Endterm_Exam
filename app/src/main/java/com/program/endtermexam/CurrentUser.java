@@ -55,11 +55,12 @@ public class CurrentUser {
 
     public CurrentUser(){}
 
-    public void InitializeUserData(){
+    public void InitializeUserData(boolean useDataKeys){
         firebaseAuth = FirebaseAuth.getInstance();
         rootNode = FirebaseDatabase.getInstance("https://endterm-exam-default-rtdb.firebaseio.com/");
         databaseReference_user = rootNode.getReference("Users");
-        userDataKeys = new ArrayList<>();
+        if (useDataKeys)
+            userDataKeys = new ArrayList<>();
 //        Query query_userIDs = databaseReference_user.child()
     }
 
@@ -86,11 +87,11 @@ public class CurrentUser {
     public HashMap<String, String> userHashmap = new HashMap<>();
 
     public void SetUserData(Activity activity){
-        Log.d("UserDataID", getUserID());
-        Log.d("UserDataID", databaseReference_user.toString());
-        Log.d("UserDataID", databaseReference_user.child(getUserID()).toString());
-        InitializePreferences(activity.getBaseContext());
-        editor = userSession.edit();
+//        Log.d("UserDataID", getUserID());
+//        Log.d("UserDataID", databaseReference_user.toString());
+//        Log.d("UserDataID", databaseReference_user.child(getUserID()).toString());
+//        InitializePreferences(activity.getBaseContext());
+//        editor = userSession.edit();
         databaseReference_user.child(getUserID()).addValueEventListener(
             new ValueEventListener() {
                 @Override
@@ -103,14 +104,14 @@ public class CurrentUser {
                         userDataKeys.add(snapshot.getKey());
                         editor.putString(snapshot.getKey(), snapshot.getValue().toString());
                         x += 1;
-                        Log.d("UserData", Integer.toString(x));
+//                        Log.d("UserData", Integer.toString(x));
                     }
                     setUserDataKeys(userDataKeys);
                     if(x >= childCount) {
                         canUpdate = true;
                         editor.commit();
-                        Log.d("UserData \"Array\"", userDataKeys.toString());
-                        Log.d("UserData \"SPEditor\"", editor.toString());
+//                        Log.d("UserData \"Array\"", userDataKeys.toString());
+//                        Log.d("UserData \"SPEditor\"", editor.toString());
                     }
                 }
 
@@ -126,17 +127,26 @@ public class CurrentUser {
             userDataHashMap.put(keys, userSession.getString(keys,null));
         return userDataHashMap;
     }
-    public HashMap<String ,String > GetUserSession(ArrayList<String> dataKeys){
+    public HashMap<String ,String > GetUserIndividualSession(){
         HashMap<String, String> userDataHashMap = new HashMap<>();
-        for(String keys : dataKeys )
-            userDataHashMap.put(keys, userSession.getString(keys,null));
+
+        userDataHashMap.put("academicProgram", userSession.getString("academicProgram",null));
+        userDataHashMap.put("email", userSession.getString("email",null));
+        userDataHashMap.put("firstName", userSession.getString("firstName",null));
+        userDataHashMap.put("lastName", userSession.getString("lastName",null));
+        userDataHashMap.put("location", userSession.getString("location",null));
+        userDataHashMap.put("middleName", userSession.getString("middleName",null));
+        userDataHashMap.put("password", userSession.getString("password",null));
+        userDataHashMap.put("type", userSession.getString("type",null));
+
         return userDataHashMap;
     }
     public void LogoutSession(){
         editor.clear();
         editor.commit();
     }
-    private void InitializePreferences(Context context){
+    public void InitializePreferences(Context context){
         userSession = context.getSharedPreferences("UserLoginSession", Context.MODE_PRIVATE);
+        editor = userSession.edit();
     }
 }

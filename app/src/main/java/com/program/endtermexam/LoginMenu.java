@@ -93,7 +93,7 @@ public class LoginMenu extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null){
                     CurrentUser currentUser = new CurrentUser("User_".concat(user.getUid()), password);
-                    currentUser.InitializeUserData();
+                    currentUser.InitializeUserData(true);
                     HashMap userMap =  new HashMap();
                     userMap.put("password", currentUser.getUserPassword());
                     currentUser.getDatabaseReference_user().child(currentUser.getUserID()).updateChildren(userMap);

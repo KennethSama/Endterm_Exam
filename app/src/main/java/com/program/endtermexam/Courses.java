@@ -35,7 +35,7 @@ public class Courses extends AppCompatActivity {
         InitializeIntents();
         InitializeValues();
 
-        ExtendedLayoutAccess.AccessAppBar(null, this, null);
+        ExtendedLayoutAccess.AccessAppBar(null, this, getResources().getString(R.string.app_courses));
     }
     private void InitializeIntents(){
         intent_viewTopic = new Intent(Courses.this, ViewTopic.class);
@@ -105,11 +105,11 @@ public class Courses extends AppCompatActivity {
             buttonCardLayout_header = "";
             next_intent = intent_viewGrades;
         }
+
         current_intent.putExtra("button_card_name", buttonCard_title);
         current_intent.putExtra("button_card_layout_header", buttonCardLayout_header);
         current_intent.putExtra("course_name", course_name);
         current_intent.putExtra("next_intent", next_intent);
-
 
         startActivity(current_intent);
     }
