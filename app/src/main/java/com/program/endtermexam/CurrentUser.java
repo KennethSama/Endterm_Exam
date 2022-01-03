@@ -45,14 +45,6 @@ public class CurrentUser {
         this.userPassword = userPassword;
     }
 
-    public ArrayList<String> getUserDataKeys() {
-        return userDataKeys;
-    }
-
-    public void setUserDataKeys(ArrayList<String> userDataKeys) {
-        this.userDataKeys = userDataKeys;
-    }
-
     public CurrentUser(){}
 
     public void InitializeUserData(boolean useDataKeys){
@@ -61,18 +53,26 @@ public class CurrentUser {
         databaseReference_user = rootNode.getReference("Users");
         if (useDataKeys)
             userDataKeys = new ArrayList<>();
-//        Query query_userIDs = databaseReference_user.child()
     }
+    public void InitializeUserID(){
+        this.setUserID("User_".concat(firebaseAuth.getCurrentUser().getUid()));
+    }
+    public boolean canUpdate;
 
     public String getUserID() {
         return userID;
     }
 
+    public ArrayList<String> getUserDataKeys() {
+        return userDataKeys;
+    }
+
+    public void setUserDataKeys(ArrayList<String> userDataKeys) {
+        this.userDataKeys = userDataKeys;
+    }
+
     public String getUserPassword() {
         return userPassword;
-    }
-    public void InitializeUserID(){
-        this.setUserID("User_".concat(firebaseAuth.getCurrentUser().getUid()));
     }
 
     public void setUserPassword(String userPassword) {
@@ -83,35 +83,25 @@ public class CurrentUser {
         this.userID = userID;
     }
 
-    public boolean canUpdate;
     public HashMap<String, String> userHashmap = new HashMap<>();
 
     public void SetUserData(Activity activity){
-//        Log.d("UserDataID", getUserID());
-//        Log.d("UserDataID", databaseReference_user.toString());
-//        Log.d("UserDataID", databaseReference_user.child(getUserID()).toString());
-//        InitializePreferences(activity.getBaseContext());
-//        editor = userSession.edit();
         databaseReference_user.child(getUserID()).addValueEventListener(
             new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     int childCount = (int) dataSnapshot.getChildrenCount();
-//                    Log.d("UserData", Integer.toString(childCount));
                     userDataKeys.clear();
                     int x = 0;
                     for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                         userDataKeys.add(snapshot.getKey());
                         editor.putString(snapshot.getKey(), snapshot.getValue().toString());
                         x += 1;
-//                        Log.d("UserData", Integer.toString(x));
                     }
                     setUserDataKeys(userDataKeys);
                     if(x >= childCount) {
                         canUpdate = true;
                         editor.commit();
-//                        Log.d("UserData \"Array\"", userDataKeys.toString());
-//                        Log.d("UserData \"SPEditor\"", editor.toString());
                     }
                 }
 

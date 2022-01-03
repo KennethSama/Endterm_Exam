@@ -62,8 +62,7 @@ public class ProfileMenu extends AppCompatActivity {
         userDetails = currentUser.GetUserIndividualSession();
         String fullname = userDetails.get("firstName").concat(" " + userDetails.get("middleName").charAt(0) + ". " + userDetails.get("lastName"));
         ExtendedLayoutAccess.AccessNavBar(null, getString(R.string.app_prof)
-                , fullname
-                , userDetails.get("email"), userDetails.get("location"), userDetails.get("academicProgram"));
+                , fullname, userDetails.get("email"), userDetails.get("location"), userDetails.get("academicProgram"), userDetails.get("type"));
 
         textView_fullname.setText(fullname);
         textView_email.setText(userDetails.get("email"));
@@ -76,7 +75,6 @@ public class ProfileMenu extends AppCompatActivity {
         currentUser.InitializeUserData(false);
         currentUser.InitializeUserID();
         currentUser.InitializePreferences(this);
-//        currentUser.SetUserData(this);
     }
 
 }

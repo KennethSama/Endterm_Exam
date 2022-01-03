@@ -14,9 +14,9 @@
         android:layout_height="?attr/actionBarSize" />
 
     <ScrollView
-        android:layout_below="@id/hidden_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/hidden_toolbar">
 
         <LinearLayout
             android:id="@+id/layout_cardsParent"
@@ -49,4 +49,25 @@
         android:id="@+id/progressBar_login"
         layout="@layout/progress_bar"
         android:visibility="gone"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/accent"
+        android:clickable="true"
+        android:focusable="true"
+        android:tint="@color/white"
+        android:visibility="visible"
+        app:srcCompat="@drawable/ic_baseline_add_24" />
+
+    <include
+        android:id="@+id/modal_addAttendance"
+        layout="@layout/add_course"
+        android:visibility="gone" />
+
 </RelativeLayout>

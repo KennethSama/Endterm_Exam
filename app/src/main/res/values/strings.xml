@@ -13,6 +13,7 @@
     <string name="app_lname">Last Name</string>
     <string name="app_fname">First Name</string>
     <string name="app_mname">Middle Name</string>
+    <string name="app_addattend">Add Attendance</string>
     <string name="app_reset">Reset Password</string>
     <string name="hint_loc">Location</string>
 
@@ -37,6 +38,9 @@
     <string name="hint_num_of_all_courses_attendPerc">Attendance Percentage In All Courses</string>
     <string name="hint_num_of_all_courses_grades">Number of Courses with Grades</string>
     <string name="hint_coursename">Course Name</string>
+    <string name="hint_courseid">Course ID</string>
+    <string name="hint_coursesched">Course Schedule</string>
+
     <string name="hint_addcourse">Add New Course</string>
     <string name="hint_fullname">Full Name</string>
     <string name="hint_email">Email</string>

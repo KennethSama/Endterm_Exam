@@ -6,6 +6,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -17,25 +19,30 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class VerifyAccountMenu extends AppCompatActivity {
-    private FirebaseAuth firebaseAuth;
+    private Intent intent_dashboard, intent_teacherDashboard;    private FirebaseAuth firebaseAuth;
+
     private FirebaseUser current_user;
     private FirebaseDatabase rootNode;
     private DatabaseReference reference;
 
     private RelativeLayout relativeLayout_modal;
     private ConstraintLayout progressBar;
-    private List<String> userData;
 
     private Bundle bundle_current;
     private int sentEmail_number;
+
+    private CurrentUser currentUser;
+    private HashMap<String, String> userDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_account_menu);
+        InitializeIntents();
         InitializeValues();
     }
     @Override
@@ -49,6 +56,12 @@ public class VerifyAccountMenu extends AppCompatActivity {
         super.onPause();
         ExtendedLayoutAccess.RemoveHandler();
     }
+
+    private void InitializeIntents(){
+        intent_dashboard = new Intent(VerifyAccountMenu.this, Dashboard.class);
+        intent_teacherDashboard = new Intent(VerifyAccountMenu.this, TeacherDashboard.class);
+    }
+
     private void InitializeValues(){
         firebaseAuth = FirebaseAuth.getInstance();
         current_user = firebaseAuth.getCurrentUser();
@@ -86,45 +99,40 @@ public class VerifyAccountMenu extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
 
         if (current_user.isEmailVerified()) {
-            startActivity(new Intent(VerifyAccountMenu.this, Dashboard.class));
-            finish();
+
+            InitiaizeData();
+            InitializeContents();
+//            startActivity(new Intent(VerifyAccountMenu.this, Dashboard.class));
+//            finish();
         }else {
             progressBar.setVisibility(View.GONE);
             Toast.makeText(VerifyAccountMenu.this, "Sorry the account is not yet verified. Please check your email to verify account", Toast.LENGTH_SHORT).show();
         }
     }
 
-
-//    public void OnVerify(View view) {
-//        current_user.reload();
-//        progressBar.setVisibility(View.VISIBLE);
-//
-//        if (current_user.isEmailVerified()) {
-//            userData = new ArrayList<>();
-//
-//            userData.add(String.valueOf(bundle_current.getString("extra_email")));
-//            userData.add(String.valueOf(bundle_current.getString("extra_fname")));
-//            userData.add(String.valueOf(bundle_current.getString("extra_mname")));
-//            userData.add(String.valueOf(bundle_current.getString("extra_lname")));
-//            userData.add(String.valueOf(bundle_current.getString("extra_pass")));
-//            userData.add(String.valueOf(bundle_current.getString("extra_program")));
-//            userData.add(String.valueOf(bundle_current.getString("extra_location")));
-//            userData.add(String.valueOf(bundle_current.getString("extra_type")));
-//
-//            UserHelper userHelper = new UserHelper(userData.get(0), userData.get(1), userData.get(2), userData.get(3), userData.get(4), userData.get(5), userData.get(6), userData.get(7));
-//
-//            reference.child("User_".concat(FirebaseAuth.getInstance().getCurrentUser().getUid())).setValue(userHelper).addOnCompleteListener(task2 -> {
-//                if (task2.isSuccessful()) {
-//                    Toast.makeText(VerifyAccountMenu.this, "User Has been registered!", Toast.LENGTH_SHORT).show();
-//                    ExtendedLayoutAccess.HideModal();
-//                    startActivity(new Intent(VerifyAccountMenu.this, Dashboard.class));
-//                    finish();
-//                } else
-//                    Toast.makeText(VerifyAccountMenu.this, "Invalid Authentication! User has not been registered", Toast.LENGTH_SHORT).show();
-//            });
-//        }else {
-//            progressBar.setVisibility(View.GONE);
-//            Toast.makeText(VerifyAccountMenu.this, "Sorry the account is not yet verified. Please check your email to verify account", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    private void InitiaizeData(){
+        progressBar.setVisibility(View.VISIBLE);
+        currentUser = new CurrentUser();
+        currentUser.InitializeUserData(true);
+        currentUser.InitializeUserID();
+        currentUser.InitializePreferences(this);
+        currentUser.SetUserData(this);
+    }
+    private void InitializeContents(){
+        new Handler().postDelayed(() -> {
+            if(currentUser.canUpdate){
+                progressBar.setVisibility(View.GONE);
+                currentUser.canUpdate = false;
+                userDetails = currentUser.GetUserSession();
+                Log.d("userDetails", userDetails.toString());
+                String fullname = userDetails.get("firstName").concat(" " + userDetails.get("middleName").charAt(0) + ". " + userDetails.get("lastName"));
+                Log.d("userDetails", fullname);
+                if (userDetails.get("type").equals(getResources().getString(R.string.type_stud)))
+                    startActivity(intent_dashboard);
+                else
+                    startActivity(intent_dashboard);
+                finish();
+            }
+        }, 2000);
+    }
 }

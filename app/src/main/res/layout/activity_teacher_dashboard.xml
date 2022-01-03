@@ -5,19 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_primary"
-    tools:context=".Dashboard">
-
+    tools:context=".TeacherDashboard">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/hidden_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        />
+        android:layout_height="?attr/actionBarSize" />
 
-    <ScrollView
-        android:layout_below="@id/hidden_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        <ScrollView
+            android:layout_below="@id/hidden_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
                         android:fontFamily="@font/quicksand_bold"
-                        android:text="Check your task/s for today!"
+                        android:text="Manage your students"
                         android:textColor="@color/primary_text"
                         android:textSize="22sp" />
 
@@ -94,19 +91,22 @@
 
                 </LinearLayout>
 
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
 <!--                <LinearLayout-->
-<!--                    android:id="@+id/linearLayout_studentCourse"-->
+<!--                    android:id="@+id/linearLayout_teacherCourse"-->
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="match_parent"-->
 <!--                    android:layout_marginStart="30dp"-->
-<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginEnd="30dp"-->
 <!--                    android:layout_marginBottom="20dp"-->
 <!--                    android:orientation="vertical">-->
 
 <!--                    <LinearLayout-->
 <!--                        android:layout_width="match_parent"-->
 <!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginRight="30dp"-->
 <!--                        android:gravity="end"-->
 <!--                        android:orientation="horizontal">-->
 
@@ -132,60 +132,37 @@
 <!--                            android:textSize="18sp" />-->
 <!--                    </LinearLayout>-->
 
-<!--                    <HorizontalScrollView-->
+<!--                    <LinearLayout-->
 <!--                        android:layout_width="match_parent"-->
 <!--                        android:layout_height="match_parent"-->
-<!--                        android:layout_gravity="start"-->
-<!--                        android:layout_marginRight="30dp"-->
-<!--                        android:scrollbarThumbHorizontal="@color/primary">-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:gravity="start"-->
+<!--                        android:orientation="horizontal">-->
 
-<!--                        <LinearLayout-->
+<!--                        <Button-->
+<!--                            android:id="@+id/button_viewAllCourses2"-->
+<!--                            style="@style/Widget.MyApp.ButtonCard"-->
 <!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:gravity="center_horizontal"-->
-<!--                            android:orientation="horizontal">-->
+<!--                            android:layout_height="100dp"-->
+<!--                            android:layout_marginStart="15dp"-->
+<!--                            android:layout_marginEnd="15dp"-->
+<!--                            android:layout_marginBottom="0dp"-->
+<!--                            android:drawableLeft="@drawable/ic_baseline_insert_chart_outlined_24"-->
+<!--                            android:fontFamily="@font/quicksand_medium"-->
+<!--                            android:gravity="bottom|start"-->
+<!--                            android:onClick="ViewAll"-->
+<!--                            android:paddingTop="20dp"-->
+<!--                            android:paddingBottom="20dp"-->
+<!--                            android:text="@string/hint_num_of_all_courses_quizzes"-->
+<!--                            android:textAlignment="viewStart"-->
+<!--                            android:textAllCaps="false"-->
+<!--                            android:textColor="@color/primary_text"-->
+<!--                            android:textSize="15sp"-->
+<!--                            app:cornerRadius="15dp" />-->
 
-<!--                            <Button-->
-<!--                                android:layout_width="273dp"-->
-<!--                                android:layout_height="179dp"-->
-<!--                                android:layout_marginStart="15dp"-->
-<!--                                android:layout_marginEnd="15dp"-->
-<!--                                android:layout_marginBottom="20dp"-->
-<!--                                android:gravity="bottom|center_horizontal"-->
-<!--                                android:onClick="ViewCourse"-->
-<!--                                android:paddingBottom="20dp"-->
-<!--                                android:text="@string/hint_coursename"-->
-<!--                                android:textAllCaps="false"-->
-<!--                                android:textSize="18dp"-->
-<!--                                app:cornerRadius="15dp" />-->
+<!--                    </LinearLayout>-->
 
-<!--                            <Button-->
-<!--                                android:id="@+id/button_AddNewCourse"-->
-<!--                                android:layout_width="273dp"-->
-<!--                                android:layout_height="179dp"-->
-<!--                                android:layout_marginStart="15dp"-->
-<!--                                android:layout_marginEnd="15dp"-->
-<!--                                android:layout_marginBottom="20dp"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:backgroundTint="#1D2D93"-->
-<!--                                android:drawableTop="@drawable/ic_baseline_post_add_24"-->
-<!--                                android:drawablePadding="0dp"-->
-<!--                                android:gravity="bottom|center_horizontal"-->
-<!--                                android:paddingTop="60dp"-->
-<!--                                android:paddingBottom="20dp"-->
-<!--                                android:text="@string/hint_addcourse"-->
-<!--                                android:textAllCaps="false"-->
-<!--                                android:textSize="18dp"-->
-<!--                                app:cornerRadius="15dp" />-->
-
-<!--                        </LinearLayout>-->
-<!--                    </HorizontalScrollView>-->
 <!--                </LinearLayout>-->
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -392,7 +369,7 @@
                 </LinearLayout>
 
             </LinearLayout>
-    </ScrollView>
+        </ScrollView>
 
     <include
         android:id="@+id/actionbar_pacefy"

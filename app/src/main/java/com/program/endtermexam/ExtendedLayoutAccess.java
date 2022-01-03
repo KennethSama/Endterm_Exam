@@ -44,8 +44,6 @@ public final class ExtendedLayoutAccess{
     private static LinearLayout navbar_header;
     private static TextView textView_fullname, textView_email, textView_location, textView_program;
 
-
-
     private static LinkedList<MaterialButton> nav_buttons;
     private static LinearLayout navbar_menu;
     private static Handler handler = new Handler();
@@ -58,9 +56,7 @@ public final class ExtendedLayoutAccess{
 
     private static RelativeLayout nav_bar;
 
-    private ExtendedLayoutAccess(){
-//        imageView_icon2
-    }
+    private ExtendedLayoutAccess(){ }
     public static void AccessAppBar(Toolbar actionbar_pacefy, Activity activity, String appbarTitle){
         current_activity = activity;
         if (actionbar_pacefy == null)
@@ -71,15 +67,22 @@ public final class ExtendedLayoutAccess{
         textView_current_activityTitle = actionbar_pacefy.findViewById(R.id.textView_current_activityTitle);
 
         imageView_menu.setOnClickListener(v -> { ShowNavBar();});
-        if (current_activity.getClass().equals(Dashboard.class) || current_activity.getClass().equals(ProfileMenu.class))
+        if (current_activity.getClass().equals(Dashboard.class) ||
+            current_activity.getClass().equals(ProfileMenu.class) ||
+            current_activity.getClass().equals(TeacherDashboard.class)
+        )
             imageView_icon2.setImageResource(R.drawable.ic_icon_2);
-        if (appbarTitle != null && !(current_activity.getClass().equals(Dashboard.class))) {
+        if (appbarTitle != null && !(
+            current_activity.getClass().equals(Dashboard.class) ||
+            current_activity.getClass().equals(ProfileMenu.class) ||
+            current_activity.getClass().equals(TeacherDashboard.class) ))
+        {
             textView_current_activityTitle.setText(appbarTitle);
             imageView_icon2.setOnClickListener(v -> { current_activity.finish(); });
         }
         Log.d("ClassName", current_activity.getClass().toString());
     }
-    public static void AccessNavBar(RelativeLayout relativeLayout_navbar, String activityTitle, String fullname, String email, String location, String program){
+    public static void AccessNavBar(RelativeLayout relativeLayout_navbar, String activityTitle, String fullname, String email, String location, String program, String type){
         if (relativeLayout_navbar == null)
             relativeLayout_navbar = current_activity.findViewById(R.id.navbar_layout);
 
@@ -89,16 +92,16 @@ public final class ExtendedLayoutAccess{
         navbar_header = nav_bar.findViewById(R.id.navbar_header);
         imageView_goBack = nav_bar.findViewById(R.id.button_goBack);
 
-        logout_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_logout);
-        dashboard_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_dashboard);
-        profile_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_profile);
-        settings_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_settings);
-        help_navBarButton = (MaterialButton) navbar_menu.findViewById(R.id.nav_help);
+        logout_navBarButton = navbar_menu.findViewById(R.id.nav_logout);
+        dashboard_navBarButton = navbar_menu.findViewById(R.id.nav_dashboard);
+        profile_navBarButton = navbar_menu.findViewById(R.id.nav_profile);
+        settings_navBarButton = navbar_menu.findViewById(R.id.nav_settings);
+        help_navBarButton = navbar_menu.findViewById(R.id.nav_help);
 
-        textView_fullname = (TextView) navbar_header.findViewById(R.id.textView_fullname);
-        textView_email = (TextView) navbar_header.findViewById(R.id.textView_email);
-        textView_location = (TextView) navbar_header.findViewById(R.id.textView_location);
-        textView_program = (TextView) navbar_header.findViewById(R.id.textView_program);
+        textView_fullname = navbar_header.findViewById(R.id.textView_fullname);
+        textView_email = navbar_header.findViewById(R.id.textView_email);
+        textView_location = navbar_header.findViewById(R.id.textView_location);
+        textView_program = navbar_header.findViewById(R.id.textView_program);
 
         Log.d("Data", String.format("%s %s %s %s", fullname, email, location, program));
 
@@ -118,16 +121,19 @@ public final class ExtendedLayoutAccess{
                 current_navBarButton.setTextColor(ContextCompat.getColor(current_activity, R.color.white_primary));
             }
         }
-//        if (current_navBarButton.getText().equals(current_activity.getResources().getString(R.string.app_dash)))
-//            dashboard_navBarButton.setOnClickListener(v-> HideNavBar() );
-//        else
 
-//        if (current_navBarButton.getText().equals(current_activity.getResources().getString(R.string.app_dash)))
-//            profile_navBarButton.setOnClickListener(v-> HideNavBar() );
-        if (current_activity.getClass().equals(Dashboard.class))
-            dashboard_navBarButton.setOnClickListener(v-> HideNavBar() );
-        else
-            dashboard_navBarButton.setOnClickListener(v-> OnDashboard(current_activity) );
+        if (type.equals("Student")) {
+            if (current_activity.getClass().equals(Dashboard.class))
+                dashboard_navBarButton.setOnClickListener(v -> HideNavBar());
+            else
+                dashboard_navBarButton.setOnClickListener(v -> OnDashboard(current_activity));
+        }
+        else {
+            if (current_activity.getClass().equals(TeacherDashboard.class))
+                dashboard_navBarButton.setOnClickListener(v -> HideNavBar());
+            else
+                dashboard_navBarButton.setOnClickListener(v -> OnTeacherDashboard(current_activity));
+        }
 
         if (current_activity.getClass().equals(ProfileMenu.class))
             profile_navBarButton.setOnClickListener(v-> HideNavBar() );
@@ -174,6 +180,11 @@ public final class ExtendedLayoutAccess{
     }
     public static void OnDashboard(Activity activity){
         Intent intent = new Intent(activity.getBaseContext(), Dashboard.class);
+        activity.startActivity(intent);
+        activity.finish();
+    }
+    public static void OnTeacherDashboard(Activity activity){
+        Intent intent = new Intent(activity.getBaseContext(), TeacherDashboard.class);
         activity.startActivity(intent);
         activity.finish();
     }

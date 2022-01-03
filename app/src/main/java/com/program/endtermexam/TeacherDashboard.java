@@ -1,33 +1,20 @@
 package com.program.endtermexam;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Locale;
 
-public class Dashboard extends AppCompatActivity {
+public class TeacherDashboard extends AppCompatActivity {
     private Intent intent_viewAll, intent_viewCourse;
+
     private RelativeLayout relativeLayout_modal;
     private TextView textView_user;
 
@@ -37,14 +24,13 @@ public class Dashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
+        setContentView(R.layout.activity_teacher_dashboard);
 
         ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_dash));
         InitializeIntents();
         InitializeValues();
         InitiaizeData();
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -62,14 +48,6 @@ public class Dashboard extends AppCompatActivity {
         super.onPause();
         ExtendedLayoutAccess.RemoveHandler();
     }
-
-    private void InitializeValues(){
-
-        relativeLayout_modal = findViewById(R.id.modal_message);
-        textView_user = findViewById(R.id.textView_user);
-
-        ExtendedLayoutAccess.InitializeModal(relativeLayout_modal);
-    }
     private void InitializeContents(){
         userDetails = currentUser.GetUserIndividualSession();
         String fullname = userDetails.get("firstName").concat(" " + userDetails.get("middleName").charAt(0) + ". " + userDetails.get("lastName"));
@@ -77,18 +55,27 @@ public class Dashboard extends AppCompatActivity {
         ExtendedLayoutAccess.AccessNavBar(null, getString(R.string.app_dash)
                 , fullname, userDetails.get("email"), userDetails.get("location"), userDetails.get("academicProgram"), userDetails.get("type"));
 
+        Log.d("UserDetails Teacher", userDetails.toString());
+
         textView_user.setText(userDetails.get("firstName"));
     }
+
     private void InitiaizeData(){
         currentUser = new CurrentUser();
         currentUser.InitializeUserData(false);
         currentUser.InitializeUserID();
         currentUser.InitializePreferences(this);
     }
+    private void InitializeValues(){
 
+        relativeLayout_modal = findViewById(R.id.modal_message);
+        textView_user = findViewById(R.id.textView_user);
+
+        ExtendedLayoutAccess.InitializeModal(relativeLayout_modal);
+    }
     private void InitializeIntents(){
-        intent_viewAll = new Intent(Dashboard.this, Courses.class);
-        intent_viewCourse = new Intent(Dashboard.this, ViewCourse.class);
+        intent_viewAll = new Intent(this, Courses.class);
+        intent_viewCourse = new Intent(this, ViewCourse.class);
     }
     public void ViewAll(View view) {
         String action_bar_title = null;
@@ -96,7 +83,8 @@ public class Dashboard extends AppCompatActivity {
         Intent intent_next = null;
         intent_next = intent_viewCourse;
         switch (view.getId()){
-//            case R.id.button_viewAllCourses: {
+//            case R.id.button_viewAllCourses:
+//            case R.id.button_viewAllCourses2: {
 //                action_bar_title = getString(R.string.app_courses);
 //                card_title = getString(R.string.hint_modulenums);
 //            } break;
@@ -124,9 +112,5 @@ public class Dashboard extends AppCompatActivity {
         startActivity(intent_viewAll);
     }
 
-//    public void ViewCourse(View view) {
-//        int id = view.getId();
-//        Toast.makeText(this, String.format("View ID: %s", id), Toast.LENGTH_SHORT).show();
-//        startActivity(intent_viewCourse);
-//    }
+
 }

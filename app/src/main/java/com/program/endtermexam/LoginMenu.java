@@ -5,6 +5,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.RelativeLayout;
@@ -17,11 +19,14 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.HashMap;
 
 public class LoginMenu extends AppCompatActivity {
-    private Intent intent_dashboard;
+    private Intent intent_dashboard, intent_teacherDashboard;
     private FirebaseAuth firebaseAuth;
     private TextInputLayout textInputLayout_email, textInputLayout_password;
     private RelativeLayout relativeLayout_modal;
     private ConstraintLayout progressBar;
+    private CurrentUser currentUser;
+    private HashMap<String, String> userDetails;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,7 @@ public class LoginMenu extends AppCompatActivity {
     }
     private void InitializeIntents(){
         intent_dashboard = new Intent(LoginMenu.this, Dashboard.class);
+        intent_teacherDashboard = new Intent(LoginMenu.this, TeacherDashboard.class);
     }
     private void InitializeValues(){
         relativeLayout_modal = findViewById(R.id.modal_message);
@@ -97,11 +103,12 @@ public class LoginMenu extends AppCompatActivity {
                     HashMap userMap =  new HashMap();
                     userMap.put("password", currentUser.getUserPassword());
                     currentUser.getDatabaseReference_user().child(currentUser.getUserID()).updateChildren(userMap);
-                    if (user.isEmailVerified())
-                        startActivity(intent_dashboard);
+                    if (user.isEmailVerified()) {
+                        InitiaizeData();
+                        InitializeContents();
+                    }
                     else
                         startActivity(new Intent(LoginMenu.this, VerifyAccountMenu.class));
-                    finish();
                 }else
                     Toast.makeText(LoginMenu.this, "user not logged in!\nPlease contact the technical support team", Toast.LENGTH_LONG).show();
             }else {
@@ -110,8 +117,30 @@ public class LoginMenu extends AppCompatActivity {
             }
         });
     }
-
     public void ForgotPassword(View view) {
         ExtendedLayoutAccess.ForgotPassword(this);
+    }
+
+    private void InitiaizeData(){
+        progressBar.setVisibility(View.VISIBLE);
+        currentUser = new CurrentUser();
+        currentUser.InitializeUserData(true);
+        currentUser.InitializeUserID();
+        currentUser.InitializePreferences(this);
+        currentUser.SetUserData(this);
+    }
+    private void InitializeContents(){
+        new Handler().postDelayed(() -> {
+            if(currentUser.canUpdate){
+                progressBar.setVisibility(View.GONE);
+                currentUser.canUpdate = false;
+                userDetails = currentUser.GetUserSession();
+                if (userDetails.get("type").equals(getResources().getString(R.string.type_stud)))
+                    startActivity(intent_dashboard);
+                else
+                    startActivity(intent_teacherDashboard);
+                finish();
+            }
+        }, 2000);
     }
 }

@@ -12,6 +12,11 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.HashMap;
+
 
 public class Courses extends AppCompatActivity {
     private int numberOfCardCourse = 3;
@@ -28,14 +33,61 @@ public class Courses extends AppCompatActivity {
 
     private RelativeLayout relativeLayout_modal;
 
+    private HashMap<String, String> userDetails;
+    private CurrentUser currentUser;
+
+    private FloatingActionButton floatingActionButton;
+    private RelativeLayout modal_addAttendance;
+    private MaterialButton materialButton_add, materialButton_cancel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courses);
-        InitializeIntents();
-        InitializeValues();
 
         ExtendedLayoutAccess.AccessAppBar(null, this, getResources().getString(R.string.app_courses));
+        InitializeIntents();
+        InitializeValues();
+        InitiaizeData();
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        InitializeContents();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ExtendedLayoutAccess.CheckConnection(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ExtendedLayoutAccess.RemoveHandler();
+    }
+    private void InitializeContents(){
+        userDetails = currentUser.GetUserIndividualSession();
+        String fullname = userDetails.get("firstName").concat(" " + userDetails.get("middleName").charAt(0) + ". " + userDetails.get("lastName"));
+
+        ExtendedLayoutAccess.AccessNavBar(null, getString(R.string.app_dash)
+                , fullname, userDetails.get("email"), userDetails.get("location"), userDetails.get("academicProgram"), userDetails.get("type"));
+
+        if (userDetails.get("type").equals(getResources().getString(R.string.type_stud)))
+            floatingActionButton.setVisibility(View.GONE);
+        else {
+            floatingActionButton.setVisibility(View.VISIBLE);
+            floatingActionButton.setOnClickListener(v-> modal_addAttendance.setVisibility(View.VISIBLE));
+            materialButton_add.setOnClickListener(v-> AddAttendance());
+            materialButton_cancel.setOnClickListener(v-> modal_addAttendance.setVisibility(View.GONE));
+        }
+    }
+    private void InitiaizeData(){
+        currentUser = new CurrentUser();
+        currentUser.InitializeUserData(false);
+        currentUser.InitializeUserID();
+        currentUser.InitializePreferences(this);
     }
     private void InitializeIntents(){
         intent_viewTopic = new Intent(Courses.this, ViewTopic.class);
@@ -43,14 +95,20 @@ public class Courses extends AppCompatActivity {
         intent_viewAttend = new Intent(Courses.this, ViewAttendance.class);
 
     }
+
+
     private void InitializeValues(){
         bundle_current = getIntent().getExtras();
 
         layout_cardsParent = findViewById(R.id.layout_cardsParent);
         actionbar_pacefy = findViewById(R.id.actionbar_pacefy);
+        floatingActionButton = findViewById(R.id.floatingActionButton);
         textView_current_activityTitle = actionbar_pacefy.findViewById(R.id.textView_current_activityTitle);
 
         relativeLayout_modal = findViewById(R.id.modal_message);
+        modal_addAttendance = findViewById(R.id.modal_addAttendance);
+        materialButton_add = findViewById(R.id.materialButton_add);
+        materialButton_cancel = findViewById(R.id.materialButton_cancel);
 
         ExtendedLayoutAccess.InitializeModal(relativeLayout_modal);
 
@@ -112,6 +170,9 @@ public class Courses extends AppCompatActivity {
         current_intent.putExtra("next_intent", next_intent);
 
         startActivity(current_intent);
+    }
+    private void AddAttendance(){
+        modal_addAttendance.setVisibility(View.GONE);
     }
 }
 

@@ -66,7 +66,5 @@ public class ViewCourse extends AppCompatActivity {
 
         textView_buttonCard_header.setText(buttonCardLayout_header);
         linearLayout_courseModulesParent.addView(view);
-
-
     }
 }
