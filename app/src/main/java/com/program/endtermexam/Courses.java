@@ -289,6 +289,11 @@ public class Courses extends AppCompatActivity {
         textInputLayout1.getEditText().getText().clear();
         textInputLayout2.getEditText().getText().clear();
     }
+
+    public void TestAttendance(View view){
+        Intent intent_attendanceTest = new Intent(Courses.this, ViewAttendance.class);
+        startActivity(intent_attendanceTest);
+    }
 }
 
 
