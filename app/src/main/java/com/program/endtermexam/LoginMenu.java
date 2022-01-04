@@ -26,6 +26,7 @@ public class LoginMenu extends AppCompatActivity {
     private ConstraintLayout progressBar;
     private CurrentUser currentUser;
     private HashMap<String, String> userDetails;
+    private HashMap<String, String> quizDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +99,8 @@ public class LoginMenu extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null){
-                    CurrentUser currentUser = new CurrentUser("User_".concat(user.getUid()), password);
+//                    CurrentUser currentUser = new CurrentUser("User_".concat(user.getUid()), password);
+                    currentUser = new CurrentUser("User_".concat(user.getUid()), password);
                     currentUser.InitializeUserData(true);
                     HashMap userMap =  new HashMap();
                     userMap.put("password", currentUser.getUserPassword());
@@ -128,17 +130,28 @@ public class LoginMenu extends AppCompatActivity {
         currentUser.InitializeUserID();
         currentUser.InitializePreferences(this);
         currentUser.SetUserData(this);
+
+        currentUser.InitializeQuizData();
+        currentUser.InitializeQuizPreferences(this);
+        currentUser.SetAllQuizData(this);
     }
     private void InitializeContents(){
         new Handler().postDelayed(() -> {
-            if(currentUser.canUpdate){
+            if(currentUser.canUpdate && currentUser.canUpdateQuiz){
                 progressBar.setVisibility(View.GONE);
                 currentUser.canUpdate = false;
+                currentUser.canUpdateQuiz = false;
+
                 userDetails = currentUser.GetUserSession();
+                quizDetails = currentUser.GetAllQuizData();
+                Log.d("quizDetails", quizDetails.toString());
+//                Log.d("quizDetails", Long.toString(quizDetails.size()));
+
                 if (userDetails.get("type").equals(getResources().getString(R.string.type_stud)))
                     startActivity(intent_dashboard);
                 else
                     startActivity(intent_teacherDashboard);
+
                 finish();
             }
         }, 2000);

@@ -96,10 +96,6 @@ public class Dashboard extends AppCompatActivity {
         Intent intent_next = null;
         intent_next = intent_viewCourse;
         switch (view.getId()){
-//            case R.id.button_viewAllCourses: {
-//                action_bar_title = getString(R.string.app_courses);
-//                card_title = getString(R.string.hint_modulenums);
-//            } break;
             case R.id.button_viewAllQuizzes:
             case R.id.button_viewAllQuizzes2: {
                 action_bar_title = getString(R.string.app_quizzes);
@@ -118,15 +114,9 @@ public class Dashboard extends AppCompatActivity {
         }
         intent_viewAll.putExtra("card_name", card_title);
         intent_viewAll.putExtra("action_bar_name", action_bar_title);
-        intent_viewAll.putExtra("course_name", getString(R.string.hint_coursename));
+//        intent_viewAll.putExtra("course_name", getString(R.string.hint_coursename));
         intent_viewAll.putExtra("next_intent", intent_next);
 
         startActivity(intent_viewAll);
     }
-
-//    public void ViewCourse(View view) {
-//        int id = view.getId();
-//        Toast.makeText(this, String.format("View ID: %s", id), Toast.LENGTH_SHORT).show();
-//        startActivity(intent_viewCourse);
-//    }
 }

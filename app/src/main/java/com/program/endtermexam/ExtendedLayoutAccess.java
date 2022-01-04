@@ -66,6 +66,7 @@ public final class ExtendedLayoutAccess{
         imageView_menu = actionbar_pacefy.findViewById(R.id.imageView_menu);
         textView_current_activityTitle = actionbar_pacefy.findViewById(R.id.textView_current_activityTitle);
 
+
         imageView_menu.setOnClickListener(v -> { ShowNavBar();});
         if (current_activity.getClass().equals(Dashboard.class) ||
             current_activity.getClass().equals(ProfileMenu.class) ||
@@ -82,6 +83,7 @@ public final class ExtendedLayoutAccess{
         }
         Log.d("ClassName", current_activity.getClass().toString());
     }
+
     public static void AccessNavBar(RelativeLayout relativeLayout_navbar, String activityTitle, String fullname, String email, String location, String program, String type){
         if (relativeLayout_navbar == null)
             relativeLayout_navbar = current_activity.findViewById(R.id.navbar_layout);

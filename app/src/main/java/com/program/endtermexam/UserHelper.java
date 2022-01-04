@@ -2,6 +2,8 @@ package com.program.endtermexam;
 
 public class UserHelper {
     private String Email, FirstName, MiddleName, LastName, Password, AcademicProgram, Location, Type;
+    private String quizNumber, numberOfItems;
+
 
     public UserHelper(String email, String firstName, String middleName, String lastName, String password, String academicProgram, String location, String type) {
         Email = email;
@@ -15,6 +17,26 @@ public class UserHelper {
     }
 
     public UserHelper() { }
+
+    public void CreateQuiz(String quizNumber,String numberOfItems){
+        this.quizNumber =quizNumber;
+        this.numberOfItems = numberOfItems;
+    }
+    public String getQuizNumber() {
+        return quizNumber;
+    }
+
+    public void setQuizNumber(String quizNumber) {
+        this.quizNumber = quizNumber;
+    }
+
+    public String getNumberOfItems() {
+        return numberOfItems;
+    }
+
+    public void setNumberOfItems(String numberOfItems) {
+        this.numberOfItems = numberOfItems;
+    }
 
     public String getEmail() {
         return Email;

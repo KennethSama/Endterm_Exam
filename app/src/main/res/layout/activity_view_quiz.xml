@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_primary"
-    android:orientation="vertical"
-    tools:context=".ViewQuiz">
-
-    <include layout="@layout/pacefy_actionbar" />
+    tools:context=".ViewQuiz"
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,6 +16,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/hidden_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="22dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -172,4 +180,6 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+    <include
+        layout="@layout/pacefy_actionbar" />
+</RelativeLayout>

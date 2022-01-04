@@ -46,7 +46,7 @@
         android:visibility="gone" />
 
     <include
-        android:id="@+id/progressBar_login"
+        android:id="@+id/progressBar_layout"
         layout="@layout/progress_bar"
         android:visibility="gone"/>
 
@@ -67,7 +67,12 @@
 
     <include
         android:id="@+id/modal_addAttendance"
-        layout="@layout/add_course"
+        layout="@layout/add_attendance"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/modal_addQuiz"
+        layout="@layout/add_quiz"
         android:visibility="gone" />
 
 </RelativeLayout>
