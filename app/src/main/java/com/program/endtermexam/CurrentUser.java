@@ -230,6 +230,7 @@ public class CurrentUser {
         userDataHashMap.put("middleName", session_user.getString("middleName",null));
         userDataHashMap.put("password", session_user.getString("password",null));
         userDataHashMap.put("type", session_user.getString("type",null));
+        userDataHashMap.put("status", session_user.getString("status", null));
 
         return userDataHashMap;
     }

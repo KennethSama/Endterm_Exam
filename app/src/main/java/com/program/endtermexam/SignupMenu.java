@@ -108,8 +108,9 @@ public class SignupMenu extends AppCompatActivity {
         String program = textInputLayout_prog.getEditText().getText().toString().trim();
         String location = textInputLayout_loc.getEditText().getText().toString().trim();
         String type = radioButton_selectedType.getText().toString();
+        String status = "Absent";
 
-        UserHelper userHelper = new UserHelper(email, fname, mname, lname, pass, program, location, type);
+        UserHelper userHelper = new UserHelper(email, fname, mname, lname, pass, program, location, type, status);
 
         if (email.isEmpty() || fname.isEmpty() || mname.isEmpty() || lname.isEmpty() ||
                 program.isEmpty() || location.isEmpty() || type.isEmpty()){

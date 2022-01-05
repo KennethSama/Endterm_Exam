@@ -1,11 +1,11 @@
 package com.program.endtermexam;
 
 public class UserHelper {
-    private String Email, FirstName, MiddleName, LastName, Password, AcademicProgram, Location, Type;
+    private String Email, FirstName, MiddleName, LastName, Password, AcademicProgram, Location, Type, Status;
     private String quizNumber, numberOfItems;
 
 
-    public UserHelper(String email, String firstName, String middleName, String lastName, String password, String academicProgram, String location, String type) {
+    public UserHelper(String email, String firstName, String middleName, String lastName, String password, String academicProgram, String location, String type, String status) {
         Email = email;
         FirstName = firstName;
         MiddleName = middleName;
@@ -14,6 +14,7 @@ public class UserHelper {
         AcademicProgram = academicProgram;
         Location = location;
         Type = type;
+        Status = status;
     }
 
     public UserHelper() { }
@@ -100,5 +101,13 @@ public class UserHelper {
 
     public void setType(String type) {
         Type = type;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
     }
 }

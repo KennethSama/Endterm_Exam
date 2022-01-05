@@ -2,8 +2,11 @@ package com.program.endtermexam;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -24,9 +27,10 @@ import java.util.ArrayList;
 
 public class ViewAttendance extends AppCompatActivity {
 
-    private ListView listView;
-    private RadioGroup studentRadioGroup;
-    private RadioButton studentRadioButtonType;
+    private RecyclerView recyclerView;
+    private ArrayList<StudentInfo> studentList = new ArrayList<>();
+
+    int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,32 +38,34 @@ public class ViewAttendance extends AppCompatActivity {
         setContentView(R.layout.activity_view_attendance);
         ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_attend));
 
-        listView = findViewById(R.id.listView_attendance);
-        studentRadioGroup = findViewById(R.id.student_attendance);
+        recyclerView = findViewById(R.id.listView_attendance);
         AddStudents();
     }
 
-    private void AddStudents(){
-        ArrayList<StudentInfo> studentList = new ArrayList<>();
-        final Integer[] values = new Integer[]{1,2,1,2};
-
-        AttendanceAdapter adapter = new AttendanceAdapter(getApplicationContext(), R.layout.list_item, studentList);
-        listView.setAdapter(adapter);
-
+    public void AddStudents(){
+        AttendanceAdapter attendanceAdapter = new AttendanceAdapter(this, studentList);
+        recyclerView.setAdapter(attendanceAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 studentList.clear();
+                int position = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    String userID = snapshot.getKey();
                     StudentInfoFirebase info = snapshot.getValue(StudentInfoFirebase.class);
-                    String name = info.getFirstName() + " " + info.getLastName();
-                    String email = info.getEmail();
-                    StudentInfo student = new StudentInfo(name, email);
-                    studentList.add(student);
+                    if (info.getType().equals("Student")){
+                        String name = info.getFirstName() + " " + info.getLastName();
+                        String email = info.getEmail();
+                        String status = info.getStatus();
+                        StudentInfo student = new StudentInfo(name, email, status, userID);
+                        studentList.add(student);
+                        position++;
+                        attendanceAdapter.notifyItemChanged(position);
+                    }
                 }
-                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -67,15 +73,22 @@ public class ViewAttendance extends AppCompatActivity {
 
             }
         });
+
+        count++;
+
+        refresh(1000);
     }
 
-    public void OnAttendanceStatusPressed(View view){
+    private void refresh(int milliseconds){
+        final Handler handler = new Handler();
 
-        int selectedType = studentRadioGroup.getCheckedRadioButtonId();
-        studentRadioButtonType = studentRadioGroup.findViewById(selectedType);
-        String type = studentRadioButtonType.getText().toString();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                AddStudents();
+            }
+        };
 
-        Toast toast = Toast.makeText(getApplicationContext(), type, Toast.LENGTH_SHORT);
-        toast.show();
+        handler.postDelayed(runnable, milliseconds);
     }
 }
