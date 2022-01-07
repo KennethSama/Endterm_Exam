@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_primary"
+    android:orientation="vertical"
+    tools:context=".ViewStudents">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/hidden_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:layout_below="@id/hidden_toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/gradesList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_Elab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Elaborate: "
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView_ElabValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="ElaborateValue "
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_Elab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Engage: "
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView_EnggValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="EngageValue"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_Elab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Evaluate"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView_EvalValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="EvaluateValue "
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_Elab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Explain: "
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView_ExplnValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="ExplainValue "
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_Elab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Explore: "
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textView_ExplrValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="ExploreValue: "
+                        android:textAlignment="textStart"
+                        android:textColor="@color/primary_text"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="?android:attr/listDivider" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Prelim Grade: "
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/primary_text" />
+
+                <TextView
+                    android:id="@+id/textView_prelimAverage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Prelim Grade: "
+                    android:textColor="@color/primary_text"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="?android:attr/listDivider" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/actionbar_pacefy"
+        layout="@layout/pacefy_actionbar" />
+
+    <include
+        android:id="@+id/navbar_layout"
+        layout="@layout/navbar_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/modal_message"
+        layout="@layout/modal_layout"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/progressBar_login"
+        layout="@layout/progress_bar"
+        android:visibility="gone"/>
+
+</RelativeLayout>

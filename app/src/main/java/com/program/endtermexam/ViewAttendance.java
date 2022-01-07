@@ -29,21 +29,23 @@ public class ViewAttendance extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ArrayList<StudentInfo> studentList = new ArrayList<>();
-
+    private String userType;
     int count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_attendance);
+
         ExtendedLayoutAccess.AccessAppBar(null, this, getString(R.string.app_attend));
 
         recyclerView = findViewById(R.id.listView_attendance);
+        userType = String.valueOf(getIntent().getExtras().getString("user_type"));
         AddStudents();
     }
 
     public void AddStudents(){
-        AttendanceAdapter attendanceAdapter = new AttendanceAdapter(this, studentList);
+        AttendanceAdapter attendanceAdapter = new AttendanceAdapter(this, studentList, userType);
         recyclerView.setAdapter(attendanceAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -70,7 +72,7 @@ public class ViewAttendance extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(ViewAttendance.this, "Ops! Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -82,12 +84,7 @@ public class ViewAttendance extends AppCompatActivity {
     private void refresh(int milliseconds){
         final Handler handler = new Handler();
 
-        final Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                AddStudents();
-            }
-        };
+        final Runnable runnable = () -> AddStudents();
 
         handler.postDelayed(runnable, milliseconds);
     }

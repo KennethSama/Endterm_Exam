@@ -66,21 +66,21 @@ public final class ExtendedLayoutAccess{
         imageView_menu = actionbar_pacefy.findViewById(R.id.imageView_menu);
         textView_current_activityTitle = actionbar_pacefy.findViewById(R.id.textView_current_activityTitle);
 
-
-        imageView_menu.setOnClickListener(v -> { ShowNavBar();});
         if (current_activity.getClass().equals(Dashboard.class) ||
             current_activity.getClass().equals(ProfileMenu.class) ||
             current_activity.getClass().equals(TeacherDashboard.class)
         )
             imageView_icon2.setImageResource(R.drawable.ic_icon_2);
-        if (appbarTitle != null && !(
+        if ( appbarTitle != null && !(
             current_activity.getClass().equals(Dashboard.class) ||
             current_activity.getClass().equals(ProfileMenu.class) ||
-            current_activity.getClass().equals(TeacherDashboard.class) ))
+            current_activity.getClass().equals(TeacherDashboard.class)) )
         {
             textView_current_activityTitle.setText(appbarTitle);
             imageView_icon2.setOnClickListener(v -> { current_activity.finish(); });
         }
+
+        imageView_menu.setOnClickListener(v -> ShowNavBar());
         Log.d("ClassName", current_activity.getClass().toString());
     }
 

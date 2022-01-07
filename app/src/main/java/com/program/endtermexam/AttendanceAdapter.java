@@ -15,10 +15,12 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
 
     ArrayList<StudentInfo> studentList;
     Context context;
+    String userType;
 
-    public AttendanceAdapter(Context context, ArrayList<StudentInfo> studentList){
+    public AttendanceAdapter(Context context, ArrayList<StudentInfo> studentList, String userType){
         this.context = context;
         this.studentList = studentList;
+        this.userType = userType;
     }
 
     @NonNull
@@ -34,16 +36,13 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
         holder.name.setText(studentList.get(position).getName());
         holder.email.setText(studentList.get(position).getEmail());
         holder.status.setText(studentList.get(position).getStatus());
-
-        holder.attendanceLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if(userType.equals(context.getResources().getString(R.string.type_inst)))
+            holder.attendanceLayout.setOnClickListener(view -> {
                 Intent intent = new Intent(context, EditStudentStatus.class);
                 intent.putExtra("name", studentList.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("userID", studentList.get(holder.getAdapterPosition()).getUserID());
                 context.startActivity(intent);
-            }
-        });
+            });
     }
 
     @Override

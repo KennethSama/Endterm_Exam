@@ -99,8 +99,7 @@ public class LoginMenu extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null){
-//                    CurrentUser currentUser = new CurrentUser("User_".concat(user.getUid()), password);
-                    currentUser = new CurrentUser("User_".concat(user.getUid()), password);
+                    CurrentUser currentUser = new CurrentUser("User_".concat(user.getUid()), password);
                     currentUser.InitializeUserData(true);
                     HashMap userMap =  new HashMap();
                     userMap.put("password", currentUser.getUserPassword());
@@ -144,8 +143,6 @@ public class LoginMenu extends AppCompatActivity {
 
                 userDetails = currentUser.GetUserSession();
                 quizDetails = currentUser.GetAllQuizData();
-                Log.d("quizDetails", quizDetails.toString());
-//                Log.d("quizDetails", Long.toString(quizDetails.size()));
 
                 if (userDetails.get("type").equals(getResources().getString(R.string.type_stud)))
                     startActivity(intent_dashboard);
@@ -153,7 +150,8 @@ public class LoginMenu extends AppCompatActivity {
                     startActivity(intent_teacherDashboard);
 
                 finish();
-            }
-        }, 2000);
+            }else
+                InitializeContents();
+        }, 100);
     }
 }

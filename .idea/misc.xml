@@ -19,6 +19,7 @@
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.3828125" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/drawable/ic_baseline_filter_9_plus_24.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/drawable/ic_baseline_grading_24.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/drawable/ic_baseline_insert_chart_outlined_24.xml" value="0.23072916666666668" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.3828125" />
@@ -44,9 +45,12 @@
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/drawable/round_corner.xml" value="0.3828125" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/font/quicksand.xml" value="0.396875" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout-v26/activity_reset_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_attendance_list_menu.xml" value="0.2" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_courses.xml" value="0.25" />
-        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_dashboard.xml" value="0.22" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_dashboard.xml" value="0.33" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_edit_grades.xml" value="0.25" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_edit_quiz.xml" value="0.2" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_edit_student_status.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_login_menu.xml" value="0.25" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_profile_menu.xml" value="0.33" />
@@ -57,19 +61,21 @@
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_verify_account_menu.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_view_attendance.xml" value="0.5" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_view_course.xml" value="0.22" />
-        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_view_grades.xml" value="0.5" />
-        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_view_quiz.xml" value="0.33" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_view_grades.xml" value="0.3907407407407407" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_view_quiz.xml" value="0.22" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_view_students.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/activity_view_topic.xml" value="0.4436936936936937" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/add_course.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/add_quiz.xml" value="0.33" />
-        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/cardbutton_course.xml" value="0.5" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/cardbutton_course.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/cardbutton_layout.xml" value="0.5" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/edit_filndblanks_quest.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/edit_mult_choice_quiz.xml" value="0.25" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/fragment_dashboard.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/fragment_profile.xml" value="0.67" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/header_navigation.xml" value="0.67" />
-        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/list_buttons.xml" value="0.5" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/list_buttons.xml" value="0.25" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/list_item.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/modal_layout.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/module_topics.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/navbar_layout.xml" value="0.25" />
@@ -77,6 +83,8 @@
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/pacefy_actionbar_quiz.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/progress_bar.xml" value="0.33" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/splash_screen.xml" value="0.33" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/take_filndblanks_quiz.xml" value="0.20670391061452514" />
+        <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/take_multchoice_quiz.xml" value="0.25" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/layout/topic_button.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/menu/menu_navigation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/KenjieSama/AndroidStudioProjects/EndtermExam/app/src/main/res/menu/nav_menu.xml" value="0.36666666666666664" />

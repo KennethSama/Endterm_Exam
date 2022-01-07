@@ -43,12 +43,12 @@ public class Dashboard extends AppCompatActivity {
         InitializeIntents();
         InitializeValues();
         InitiaizeData();
+        InitializeContents();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        InitializeContents();
     }
 
     @Override
@@ -100,23 +100,33 @@ public class Dashboard extends AppCompatActivity {
             case R.id.button_viewAllQuizzes2: {
                 action_bar_title = getString(R.string.app_quizzes);
                 card_title = getString(R.string.hint_quizzesnums);
+                intent_viewAll = new Intent(Dashboard.this, Courses.class);
             } break;
             case R.id.button_viewAllAttendance:
             case R.id.button_viewAllAttendance2: {
                 action_bar_title = getString(R.string.app_attend);
                 card_title = getString(R.string.hint_attendPerc);
+                intent_viewAll = new Intent(Dashboard.this, Courses.class);
             } break;
             case R.id.button_viewAllGrades:
             case R.id.button_viewAllGrades2: {
-                action_bar_title = getString(R.string.app_grades);
-                card_title = getString(R.string.hint_gradesnums);
+                action_bar_title = "Grades";
+                card_title = "";
+                intent_viewAll = new Intent(Dashboard.this, ViewStudents.class);
             } break;
         }
         intent_viewAll.putExtra("card_name", card_title);
         intent_viewAll.putExtra("action_bar_name", action_bar_title);
-//        intent_viewAll.putExtra("course_name", getString(R.string.hint_coursename));
         intent_viewAll.putExtra("next_intent", intent_next);
+        intent_viewAll.putExtra("user_id", currentUser.getUserID());
 
         startActivity(intent_viewAll);
+    }
+    public void OnScores(View view){
+        Intent intent_grades = new Intent(this,ViewGrades.class);
+        intent_grades.putExtra("user_id", currentUser.getUserID());
+        intent_grades.putExtra("user_type", userDetails.get("type"));
+        Log.d("user_id", currentUser.getUserID());
+        startActivity(intent_grades);
     }
 }

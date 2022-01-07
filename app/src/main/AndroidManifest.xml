@@ -10,10 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EndtermExam">
         <activity
-            android:name=".EditStudentStatus"
-            android:parentActivityName=".ViewAttendance"
-            android:label="Edit Status"
+            android:name=".EditGrades"
             android:exported="false" />
+        <activity
+            android:name=".ViewStudents"
+            android:exported="false" />
+        <activity
+            android:name=".AttendanceListMenu"
+            android:exported="false" />
+        <activity
+            android:name=".EditStudentStatus"
+            android:exported="false"
+            android:label="Edit Status"
+            android:parentActivityName=".ViewAttendance" />
         <activity
             android:name=".EditQuiz"
             android:exported="false" />
@@ -65,8 +74,8 @@
         <activity
             android:name=".ViewAttendance"
             android:configChanges="orientation"
-            android:parentActivityName=".Dashboard"
             android:exported="false"
+            android:parentActivityName=".Dashboard"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ViewTopic"

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditGrades">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_studentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Student Name"
+            android:textColor="@color/primary_text"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="top"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_Elab"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="30dp"
+                android:textColorHint="@color/primary_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="5"
+                app:errorEnabled="true"
+                app:helperTextTextColor="@color/primary_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Elaborate"
+                    android:inputType="number"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_Engage"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="30dp"
+                android:textColorHint="@color/primary_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="5"
+                app:errorEnabled="true"
+                app:helperTextTextColor="@color/primary_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Engage"
+                    android:inputType="number"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_Eval"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="30dp"
+                android:textColorHint="@color/primary_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="5"
+                app:errorEnabled="true"
+                app:helperTextTextColor="@color/primary_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputEditText_Evaluate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Evaluate"
+                    android:inputType="number"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_Explain"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="30dp"
+                android:textColorHint="@color/primary_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="5"
+                app:errorEnabled="true"
+                app:helperTextTextColor="@color/primary_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Explain"
+                    android:inputType="number"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout_Explore"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="30dp"
+                android:textColorHint="@color/primary_text"
+                app:counterEnabled="true"
+                app:counterMaxLength="5"
+                app:errorEnabled="true"
+                app:helperTextTextColor="@color/primary_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Explore"
+                    android:inputType="number"
+                    android:paddingStart="16dp"
+                    android:textColor="@color/primary_text"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_Login"
+                style="@style/Widget.MyApp.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:onClick="OnSubmit"
+                android:text="SUBMIT"
+                app:rippleColor="@color/accent" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="0dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:gravity="center"
+                android:text="OR"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_Signup"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/quicksand_bold"
+                android:onClick="OnReset"
+                android:text="Reset Values"
+                android:textColor="@color/dark_accent"
+                app:rippleColor="@color/accent"
+                app:strokeColor="@color/dark_accent"
+                app:strokeWidth="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/progressBar_login"
+        layout="@layout/progress_bar"
+        android:visibility="gone"/>
+</RelativeLayout>

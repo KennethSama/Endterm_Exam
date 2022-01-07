@@ -33,9 +33,11 @@ public class CurrentUser {
     private DatabaseReference databaseReference_quiz;
     private SharedPreferences session_user;
     private SharedPreferences session_quiz;
+    private SharedPreferences session_indivQuiz;
     private SharedPreferences session_quizKeys;
     private SharedPreferences.Editor editor;
     private SharedPreferences.Editor editor_quiz;
+    private SharedPreferences.Editor editor_indivQuiz;
     private SharedPreferences.Editor editor_quizKeys;
 
     public DatabaseReference getDatabaseReference_user() {
@@ -102,29 +104,29 @@ public class CurrentUser {
 
     public void SetUserData(Activity activity){
         databaseReference_user.child(getUserID()).addValueEventListener(
-            new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    int childCount = (int) dataSnapshot.getChildrenCount();
-                    userDataKeys.clear();
-                    int x = 0;
-                    for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                        userDataKeys.add(snapshot.getKey());
-                        editor.putString(snapshot.getKey(), snapshot.getValue().toString());
-                        x += 1;
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        int childCount = (int) dataSnapshot.getChildrenCount();
+                        userDataKeys.clear();
+                        int x = 0;
+                        for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                            userDataKeys.add(snapshot.getKey());
+                            editor.putString(snapshot.getKey(), snapshot.getValue().toString());
+                            x += 1;
+                        }
+                        setUserDataKeys(userDataKeys);
+                        if(x >= childCount) {
+                            canUpdate = true;
+                            editor.commit();
+                        }
                     }
-                    setUserDataKeys(userDataKeys);
-                    if(x >= childCount) {
-                        canUpdate = true;
-                        editor.commit();
-                    }
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(activity.getApplicationContext(), "Opss! Something went wrong!", Toast.LENGTH_SHORT).show();
-                }
-        });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(activity.getApplicationContext(), "Opss! Something went wrong!", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 
@@ -132,34 +134,32 @@ public class CurrentUser {
     public void SetSpecificQuizData(Activity activity, String quizID){
         DatabaseReference reference;
 
-//        if (quizID == null)
-//            reference = databaseReference_quiz.child(getUserID());
-//        else
-//            reference = databaseReference_quiz.child(quizID);
-
         reference = databaseReference_quiz.child(quizID);
 
         reference.addValueEventListener(
-            new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    int childCount = (int) dataSnapshot.getChildrenCount();
-                    int x = 0;
-                    for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                        editor_quiz.putString(snapshot.getKey(), snapshot.getValue().toString());
-                        x += 1;
-                    }
-                    if(x >= childCount) {
-                        canUpdateQuiz = true;
-                        editor_quiz.commit();
-                    }
-                }
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        int childCount = (int) dataSnapshot.getChildrenCount();
+                        int x = 0;
+                        for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                            editor_indivQuiz.putString(snapshot.getKey(), snapshot.getValue().toString());
+//                            Log.d("editor_indivQuiz", session_indivQuiz.toString());
+                            x += 1;
+                        }
+//                        Log.d("editor_indivQuiz_All", session_indivQuiz.getAll().toString());
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(activity.getApplicationContext(), "Opss! Something went wrong!", Toast.LENGTH_SHORT).show();
+                        if(x >= childCount) {
+                            canUpdateQuiz = true;
+                            editor_indivQuiz.commit();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(activity.getApplicationContext(), "Opss! Something went wrong!", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
         );
     }
 
@@ -167,34 +167,47 @@ public class CurrentUser {
         DatabaseReference reference = databaseReference_quiz;
 
         reference.addValueEventListener(
-            new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    int childCount = (int) dataSnapshot.getChildrenCount();
-                    int x = 0;
-                    for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                        String key = snapshot.getKey();
-                        editor_quizKeys.putString("key_"+key, key);
-                        editor_quiz.putString(key, snapshot.getValue().toString());
-//                        Log.d("Quiz Data", session_quiz.getString(key, null));
-                        x += 1;
-                    }
-                    Log.d("Quiz Data All", session_quiz.toString());
-                    Log.d("Quiz DataKeys", editor_quizKeys.toString());
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        int childCount = (int) dataSnapshot.getChildrenCount();
+                        int x = 0;
+                        for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                            String key = snapshot.getKey();
+                            editor_quizKeys.putString("key_"+key, key);
+                            editor_quiz.putString(key, snapshot.getValue().toString());
+                            x += 1;
+                        }
+//                        Log.d("Quiz Data All", session_quiz.toString());
+//                        Log.d("Quiz DataKeys", editor_quizKeys.toString());
 
-                    if(x >= childCount) {
-                        canUpdateQuiz = true;
-                        editor_quizKeys.commit();
-                        editor_quiz.commit();
+                        if(x >= childCount) {
+                            canUpdateQuiz = true;
+                            editor_quizKeys.commit();
+                            editor_quiz.commit();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Toast.makeText(activity.getApplicationContext(), "Opss! Something went wrong!", Toast.LENGTH_SHORT).show();
                     }
                 }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(activity.getApplicationContext(), "Opss! Something went wrong!", Toast.LENGTH_SHORT).show();
-                }
-            }
         );
+    }
+
+    public HashMap<String, String> GetSingleQuizData(){
+        Map <String, ?> sessions = session_indivQuiz.getAll();
+
+        HashMap<String, String> quizHashMap = new HashMap<>();
+
+        for (Map.Entry <String, ?> entry: sessions.entrySet())
+            quizHashMap.put(entry.getKey(), entry.getValue().toString());
+
+
+        Log.d("QuizIndivDataAll", quizHashMap.toString());
+        Log.d("QuizIndivDataKeys", Long.toString(quizHashMap.size()));
+        return quizHashMap;
     }
 
 
@@ -239,6 +252,7 @@ public class CurrentUser {
         editor.clear();
         editor_quizKeys.clear();
         editor_quiz.clear();
+        editor_indivQuiz.commit();
 
         editor.commit();
         editor_quizKeys.commit();
@@ -251,7 +265,10 @@ public class CurrentUser {
     public void InitializeQuizPreferences(Context context){
         session_quiz = context.getSharedPreferences("QuizSessions", Context.MODE_PRIVATE);
         session_quizKeys = context.getSharedPreferences("QuizKeysSessions", Context.MODE_PRIVATE);
+        session_indivQuiz = context.getSharedPreferences("IndivQuizSessions", Context.MODE_PRIVATE);
+
         editor_quiz = session_quiz.edit();
         editor_quizKeys = session_quizKeys.edit();
+        editor_indivQuiz = session_indivQuiz.edit();
     }
 }

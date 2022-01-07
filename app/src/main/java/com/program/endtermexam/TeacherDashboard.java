@@ -30,11 +30,11 @@ public class TeacherDashboard extends AppCompatActivity {
         InitializeIntents();
         InitializeValues();
         InitiaizeData();
+        InitializeContents();
     }
     @Override
     protected void onStart() {
         super.onStart();
-        InitializeContents();
     }
 
     @Override
@@ -77,40 +77,37 @@ public class TeacherDashboard extends AppCompatActivity {
         intent_viewAll = new Intent(this, Courses.class);
         intent_viewCourse = new Intent(this, ViewCourse.class);
     }
+
     public void ViewAll(View view) {
         String action_bar_title = null;
         String card_title = null;
         Intent intent_next = null;
         intent_next = intent_viewCourse;
         switch (view.getId()){
-//            case R.id.button_viewAllCourses:
-//            case R.id.button_viewAllCourses2: {
-//                action_bar_title = getString(R.string.app_courses);
-//                card_title = getString(R.string.hint_modulenums);
-//            } break;
             case R.id.button_viewAllQuizzes:
             case R.id.button_viewAllQuizzes2: {
                 action_bar_title = getString(R.string.app_quizzes);
                 card_title = getString(R.string.hint_quizzesnums);
+                intent_viewAll = new Intent(TeacherDashboard.this, Courses.class);
             } break;
             case R.id.button_viewAllAttendance:
             case R.id.button_viewAllAttendance2: {
                 action_bar_title = getString(R.string.app_attend);
                 card_title = getString(R.string.hint_attendPerc);
+                intent_viewAll = new Intent(TeacherDashboard.this, Courses.class);
             } break;
             case R.id.button_viewAllGrades:
             case R.id.button_viewAllGrades2: {
-                action_bar_title = getString(R.string.app_grades);
-                card_title = getString(R.string.hint_gradesnums);
+                action_bar_title = "Grades";
+                card_title = "";
+                intent_viewAll = new Intent(TeacherDashboard.this, Courses.class);
+                intent_next = new Intent(TeacherDashboard.this, EditGrades.class);
             } break;
         }
         intent_viewAll.putExtra("card_name", card_title);
         intent_viewAll.putExtra("action_bar_name", action_bar_title);
-        intent_viewAll.putExtra("course_name", getString(R.string.hint_coursename));
         intent_viewAll.putExtra("next_intent", intent_next);
 
         startActivity(intent_viewAll);
     }
-
-
 }

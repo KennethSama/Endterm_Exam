@@ -151,16 +151,16 @@ public class EditQuiz extends AppCompatActivity {
         Log.d("quizMap", quizMap.toString());
         progressBar_layout.setVisibility(View.VISIBLE);
         reference.child(quizId).setValue(quizMap).addOnCompleteListener(
-            task -> {
-                if (task.isSuccessful()){
-                    Toast.makeText(this, "Quiz Posted to Every Student!\nSubscribe to Premium Account to edit the Viewers and Takers", Toast.LENGTH_LONG).show();
-                    quizMap.clear();
-                    finish();
-                }else {
-                    progressBar_layout.setVisibility(View.GONE);
-                    Toast.makeText(EditQuiz.this, "Error! Something went wrong.", Toast.LENGTH_LONG).show();
+                task -> {
+                    if (task.isSuccessful()){
+                        Toast.makeText(this, "Quiz Posted to Every Student!\nSubscribe to Premium Account to edit the Viewers and Takers", Toast.LENGTH_LONG).show();
+                        quizMap.clear();
+                        finish();
+                    }else {
+                        progressBar_layout.setVisibility(View.GONE);
+                        Toast.makeText(EditQuiz.this, "Error! Something went wrong.", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
         );
     }
 }

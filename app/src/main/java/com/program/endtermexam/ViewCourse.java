@@ -51,8 +51,6 @@ public class ViewCourse extends AppCompatActivity {
         TextView textView_buttonCard_header = view.findViewById(R.id.textView_buttonCard_header);
         LinearLayout linearLayout_moduleTopics = view.findViewById(R.id.linearLayout_moduleTopics);
 
-        // TODO Add the new intent to the button_topic Extra
-
         int rand = new Random().nextInt(5);
         int randTopics =  rand == 0 ? 1 : rand;
 

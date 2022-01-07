@@ -35,6 +35,8 @@ public class EditStudentStatus extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_student_status);
 
+        ExtendedLayoutAccess.AccessAppBar(null, this, "Attendance");
+
         reference = FirebaseDatabase.getInstance().getReference("Users");
 
         studentStatus = findViewById(R.id.student_attendance);
@@ -66,8 +68,9 @@ public class EditStudentStatus extends AppCompatActivity {
         int selectedStatus = studentStatus.getCheckedRadioButtonId();
         selectedStudentStatus = studentStatus.findViewById(selectedStatus);
 
-        reference.child("User_06AgBlWXZDdKVfn7E16YYBLUVl12").child("status").setValue(selectedStudentStatus.getText().toString());
+        reference.child(userID).child("status").setValue(selectedStudentStatus.getText().toString());
         Toast.makeText(this, "Successfully changed student's attendance status", Toast.LENGTH_SHORT).show();
+        finish();
        // viewAttendance.AddStudents();
     }
 }
